@@ -1,3 +1,6 @@
 [submodule "themes/landscape"]
 	path = themes/landscape
 	url = git@github.com:hexojs/hexo-theme-landscape.git
+[submodule "themes/next"]
+	path = themes/next
+	url = git@github.com:xuncheng/hexo-theme-next.git
