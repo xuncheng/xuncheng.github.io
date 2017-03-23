@@ -1,0 +1,834 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Middleman,Wufoo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Middleman - makes developing websites simpleMiddleman is a static site generator using all the shortcuts and tools in modern web development. Getting started
+Installation1$ gem install middleman
+After">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Developing Static Website with Middleman">
+<meta property="og:url" content="https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="Middleman - makes developing websites simpleMiddleman is a static site generator using all the shortcuts and tools in modern web development. Getting started
+Installation1$ gem install middleman
+After">
+<meta property="og:updated_time" content="2017-03-21T15:03:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Developing Static Website with Middleman">
+<meta name="twitter:description" content="Middleman - makes developing websites simpleMiddleman is a static site generator using all the shortcuts and tools in modern web development. Getting started
+Installation1$ gem install middleman
+After">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/"/>
+
+
+
+
+
+  <title> Developing Static Website with Middleman | Xuncheng Wang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuncheng Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">知易行难</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Developing Static Website with Middleman
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-08-14T00:00:00+08:00">
+                2013-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2013/08/14/developing-static-website-with-middleman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/08/14/developing-static-website-with-middleman/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Middleman-makes-developing-websites-simple"><a href="#Middleman-makes-developing-websites-simple" class="headerlink" title="Middleman - makes developing websites simple"></a><a href="http://middlemanapp.com/" target="_blank" rel="external">Middleman</a> - makes developing websites simple</h2><p>Middleman is a static site generator using all the shortcuts and tools in modern web development. <a href="http://middlemanapp.com/getting-started/" target="_blank" rel="external">Getting started</a></p>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gem install middleman</div></pre></td></tr></table></figure>
+<p>After installed successfully, it will add one new command to your environment, with 3 useful features:</p>
+<ol>
+<li>middleman init - starting a new site</li>
+<li>middleman server - start a local web server running at: <code>http://localhost:4567/</code></li>
+<li>middleman build - exporting the static site to <code>build</code> folder</li>
+</ol>
+<h2 id="Wufoo-the-online-form-builder"><a href="#Wufoo-the-online-form-builder" class="headerlink" title="Wufoo - the online form builder"></a><a href="https://www.wufoo.com/" target="_blank" rel="external">Wufoo</a> - the online form builder</h2><p>Wufoo is an Internet application that helps anybody build amazing online forms. With Wufoo, you can skip all the hard stuff (because it does it all for you), and start getting things done.</p>
+<a id="more"></a>
+<h3 id="Embed-a-Wufoo-form-on-your-site-with-XHTML-and-CSS"><a href="#Embed-a-Wufoo-form-on-your-site-with-XHTML-and-CSS" class="headerlink" title="Embed a Wufoo form on your site with XHTML and CSS"></a>Embed a Wufoo form on your site with XHTML and CSS</h3><h4 id="1-Locating-Your-Form-HTML"><a href="#1-Locating-Your-Form-HTML" class="headerlink" title="1. Locating Your Form HTML"></a>1. Locating Your Form HTML</h4><ul>
+<li>Go to the <strong>Code Manager</strong> and download the XHTML/CSS files.</li>
+<li>Open <code>index.html.erb</code>(or other file).</li>
+<li>Locate the <code>action=&#39;x&#39;</code> attribute in the <code>&lt;form&gt;</code> tag.</li>
+<li>For <code>x</code> we will need to replace the actual URL of your Wufoo form.</li>
+<li>You could find the URL of your form in the <strong>Form Code Manager</strong>, replace and save.</li>
+</ul>
+<h4 id="2-Including-a-POST-Key"><a href="#2-Including-a-POST-Key" class="headerlink" title="2. Including a POST Key"></a>2. Including a POST Key</h4><ul>
+<li>Go to the <strong>Code Manager</strong> for your form.</li>
+<li>Click on API Information in the top right.</li>
+<li>On the API Information page, locate the POST Key.</li>
+<li>Copy the key into the value attribute of the following markup:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"idstamp"</span> <span class="attr">id</span>=<span class="string">"idstamp"</span> <span class="attr">value</span>=<span class="string">"YourPostKey"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Copy the entire input element above and place it anywhere inside of the <code>&lt;form&gt;</code> tags.</li>
+</ul>
+<p>And now we’re all set! You can upload the index file to your website and start submitting data into your Wufoo account.</p>
+<p><strong>ps</strong>: the <code>name</code> attribute of <strong>Field</strong> is IMPORTANT!</p>
+<h4 id="3-Notification-Settings"><a href="#3-Notification-Settings" class="headerlink" title="3. Notification Settings"></a>3. Notification Settings</h4><p>Notification Settings allow you to control the various ways in which you can receive updates about new form submissions.</p>
+<p>To configure notification settings for your form, go to the Form Manager and click on “Notifications” underneath the form name.</p>
+<h2 id="Deploying-to-the-Gitcafe-Pages"><a href="#Deploying-to-the-Gitcafe-Pages" class="headerlink" title="Deploying to the Gitcafe Pages"></a>Deploying to the Gitcafe Pages</h2><p>Offical blog: <a href="http://blog.gitcafe.com/116.html" target="_blank" rel="external">GitCafe正式推出Pages服务</a></p>
+<ol>
+<li>Creating a new repository with your <code>YOUR-USER</code></li>
+<li>Initialize a Git repository</li>
+<li>Add a html file and commit</li>
+<li>Add a remote name and create a <code>gitcafe-pages</code> branch</li>
+<li>commit this branch to Gitcafe</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">'Hello World'</span> &lt;&lt; index.html</div><div class="line">$ git init</div><div class="line">$ git add .</div><div class="line">$ git commit <span class="_">-a</span> -m <span class="string">'init commit'</span></div><div class="line">$ git remote add origin git@gitcafe.com:YOUR-USER/YOUR-USER.git</div><div class="line">$ git checkout -b gitcafe-pages</div><div class="line">$ git push origin gitcafe-pages</div></pre></td></tr></table></figure>
+<p>And now we’re all set! You can visit <code>http://YOUR-USER.gitcafe.com/</code>. </p>
+<p>Custom Domains: <a href="http://blog.gitcafe.com/142.html" target="_blank" rel="external">http://blog.gitcafe.com/142.html</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ middleman build  <span class="comment"># building site</span></div><div class="line">$ <span class="built_in">cd</span> build</div><div class="line">$ middleman deploy  <span class="comment"># deploying</span></div></pre></td></tr></table></figure>
+<h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><ol>
+<li><a href="http://yedingding.com/2013/04/09/teahourfm-with-middleman.html" target="_blank" rel="external">http://yedingding.com/2013/04/09/teahourfm-with-middleman.html</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>Post author:</strong>
+      Xuncheng Wang
+    </li>
+    <li class="post-copyright-link">
+      <strong>Post link:</strong>
+      <a href="https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/" title="Developing Static Website with Middleman">https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright Notice: </strong>
+      All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Middleman/" rel="tag"># Middleman</a>
+          
+            <a href="/tags/Wufoo/" rel="tag"># Wufoo</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2013/07/22/feature-specs-in-rspec/" rel="next" title="Feature specs in RSpec">
+                <i class="fa fa-chevron-left"></i> Feature specs in RSpec
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2013/12/06/install-ruby-on-rails-on-mac-osx-mavericks-10-9/" rel="prev" title="Install Ruby On Rails On Mac OSX Mavericks ( 10.9 )">
+                Install Ruby On Rails On Mac OSX Mavericks ( 10.9 ) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/xuncheng.jpg"
+               alt="Xuncheng Wang" />
+          <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuncheng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wxuncheng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Middleman-makes-developing-websites-simple"><span class="nav-number">1.</span> <span class="nav-text">Middleman - makes developing websites simple</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Installation"><span class="nav-number">1.1.</span> <span class="nav-text">Installation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wufoo-the-online-form-builder"><span class="nav-number">2.</span> <span class="nav-text">Wufoo - the online form builder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Embed-a-Wufoo-form-on-your-site-with-XHTML-and-CSS"><span class="nav-number">2.1.</span> <span class="nav-text">Embed a Wufoo form on your site with XHTML and CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Locating-Your-Form-HTML"><span class="nav-number">2.1.1.</span> <span class="nav-text">1. Locating Your Form HTML</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Including-a-POST-Key"><span class="nav-number">2.1.2.</span> <span class="nav-text">2. Including a POST Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Notification-Settings"><span class="nav-number">2.1.3.</span> <span class="nav-text">3. Notification Settings</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deploying-to-the-Gitcafe-Pages"><span class="nav-number">3.</span> <span class="nav-text">Deploying to the Gitcafe Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Footnotes"><span class="nav-number">4.</span> <span class="nav-text">Footnotes</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xuncheng';
+      var disqus_identifier = '2013/08/14/developing-static-website-with-middleman/';
+
+      var disqus_title = "Developing Static Website with Middleman";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
