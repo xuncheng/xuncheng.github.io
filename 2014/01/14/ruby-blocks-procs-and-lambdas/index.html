@@ -1,0 +1,819 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Ruby,Foundation,Block,Proc,Lambda," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas.
+What are procs and lambdas?123456a_proc = Proc.new &amp;#123; puts &quot;yeah!&quot; &amp;#125;a_proc.call # =&amp;gt; yeah!a_lambda = lambd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby Blocks: Procs and Lambdas">
+<meta property="og:url" content="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas.
+What are procs and lambdas?123456a_proc = Proc.new &amp;#123; puts &quot;yeah!&quot; &amp;#125;a_proc.call # =&amp;gt; yeah!a_lambda = lambd">
+<meta property="og:updated_time" content="2017-03-24T09:52:57.478Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby Blocks: Procs and Lambdas">
+<meta name="twitter:description" content="In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas.
+What are procs and lambdas?123456a_proc = Proc.new &amp;#123; puts &quot;yeah!&quot; &amp;#125;a_proc.call # =&amp;gt; yeah!a_lambda = lambd">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/"/>
+
+
+
+
+
+  <title> Ruby Blocks: Procs and Lambdas | Xuncheng Wang </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuncheng Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">知易行难</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ruby Blocks: Procs and Lambdas
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-01-14T16:00:00+00:00">
+                2014-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2014/01/14/ruby-blocks-procs-and-lambdas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/14/ruby-blocks-procs-and-lambdas/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas.</p>
+<h3 id="What-are-procs-and-lambdas"><a href="#What-are-procs-and-lambdas" class="headerlink" title="What are procs and lambdas?"></a>What are procs and lambdas?</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a_proc = Proc.new &#123; puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></div><div class="line"></div><div class="line">a_lambda = lambda &#123; puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_lambda = -&gt; &#123; puts <span class="string">"yeah!"</span> &#125; <span class="comment"># short lambda syntax in 1.9</span></div><div class="line">a_lambda.call <span class="comment"># =&gt; yeah!</span></div></pre></td></tr></table></figure>
+<p>While it looks like these are all very similar, there are subtle differences that I will cover below.</p>
+<a id="more"></a>
+<h3 id="Differences-between-procs-and-lambdas"><a href="#Differences-between-procs-and-lambdas" class="headerlink" title="Differences between procs and lambdas"></a>Differences between procs and lambdas</h3><ol>
+<li><strong>Lambdas check the number of arguments, while procs do not</strong></li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a_proc = Proc.new &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></div><div class="line"></div><div class="line">a_lambda = lambda &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_lambda.call <span class="comment"># =&gt; wrong number of arguments (0 for 1) (ArgumentError)</span></div></pre></td></tr></table></figure>
+<ol>
+<li><strong>Lambdas and procs treat <em>return</em> keyword differently</strong></li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proc</span></span></div><div class="line">  Proc.new &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_lambda</span></span></div><div class="line">  lambda &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">puts test_proc <span class="comment"># =&gt; 1</span></div><div class="line">puts test_lambda <span class="comment"># =&gt; 0</span></div></pre></td></tr></table></figure>
+<p>As you can see, the proc returned from the <code>test_proc</code> method, and the lambda didn’t.</p>
+<h3 id="Passing-a-block-to-a-method-in-different-ways"><a href="#Passing-a-block-to-a-method-in-different-ways" class="headerlink" title="Passing a block to a method in different ways"></a>Passing a block to a method in different ways</h3><ul>
+<li><strong>With the &amp; (ampersand) symbol :</strong></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg, &amp;block)</span></span></div><div class="line">  puts arg</div><div class="line">  block.call</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</div><div class="line"><span class="comment"># =&gt; Hi</span></div><div class="line"><span class="comment"># =&gt; I'm a Proc!</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>With <em>yield</em> keywbowrd</strong></li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg)</span></span></div><div class="line">  puts arg</div><div class="line">  <span class="keyword">yield</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</div><div class="line"><span class="comment"># =&gt; Hi</span></div><div class="line"><span class="comment"># =&gt; I'm a Proc!</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>Post author:</strong>
+      Xuncheng Wang
+    </li>
+    <li class="post-copyright-link">
+      <strong>Post link:</strong>
+      <a href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/" title="Ruby Blocks: Procs and Lambdas">https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>Copyright Notice: </strong>
+      All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ruby/" rel="tag"># Ruby</a>
+          
+            <a href="/tags/Foundation/" rel="tag"># Foundation</a>
+          
+            <a href="/tags/Block/" rel="tag"># Block</a>
+          
+            <a href="/tags/Proc/" rel="tag"># Proc</a>
+          
+            <a href="/tags/Lambda/" rel="tag"># Lambda</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/01/03/include-vs-extend-in-ruby/" rel="next" title="Include vs Extend in Ruby">
+                <i class="fa fa-chevron-left"></i> Include vs Extend in Ruby
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/08/format-rails-date-to-match-javascript-date/" rel="prev" title="Format Rails Date to Match Javascript Date">
+                Format Rails Date to Match Javascript Date <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/xuncheng.jpg"
+               alt="Xuncheng Wang" />
+          <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">30</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuncheng" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/wxuncheng" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-are-procs-and-lambdas"><span class="nav-number">1.</span> <span class="nav-text">What are procs and lambdas?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Differences-between-procs-and-lambdas"><span class="nav-number">2.</span> <span class="nav-text">Differences between procs and lambdas</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Passing-a-block-to-a-method-in-different-ways"><span class="nav-number">3.</span> <span class="nav-text">Passing a block to a method in different ways</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'xuncheng';
+      var disqus_identifier = '2014/01/14/ruby-blocks-procs-and-lambdas/';
+
+      var disqus_title = "Ruby Blocks: Procs and Lambdas";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

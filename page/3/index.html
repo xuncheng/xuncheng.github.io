@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -76,7 +76,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -121,7 +121,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
     fancybox: true,
     motion: true,
@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/22/feature-specs-in-rspec/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/21/feature-specs-in-rspec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -284,7 +284,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/07/22/feature-specs-in-rspec/" itemprop="url">
+                <a class="post-title-link" href="/2013/07/21/feature-specs-in-rspec/" itemprop="url">
                   Feature specs in RSpec
                 </a>
               
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/07/22/feature-specs-in-rspec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/22/feature-specs-in-rspec/" itemprop="commentCount"></span>
+                <a href="/2013/07/21/feature-specs-in-rspec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/21/feature-specs-in-rspec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,7 +380,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'spec_helper'</span></div><div class="line"></div><div class="line">feature <span class="string">"User sign in"</span> <span class="keyword">do</span></div><div class="line">  scenario <span class="string">"with registered user"</span> <span class="keyword">do</span></div><div class="line">    user = Fabricate(<span class="symbol">:user</span>)</div><div class="line">    visit signin_path</div><div class="line">    fill_in <span class="string">"Email"</span>, <span class="symbol">with:</span> user.email</div><div class="line">    fill_in <span class="string">"Password"</span>, <span class="symbol">with:</span> user.password</div><div class="line">    click_button <span class="string">"Sign in"</span></div><div class="line">    expect(page).to have_content <span class="string">"Sign in successfully."</span></div><div class="line">    expect(page).to have_content user.full_name</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2013/07/22/feature-specs-in-rspec/" rel="contents">
+            <a class="btn" href="/2013/07/21/feature-specs-in-rspec/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -426,7 +426,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/20/shared-examples-and-macros-helper-in-rspec/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/19/shared-examples-and-macros-helper-in-rspec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -448,7 +448,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/07/20/shared-examples-and-macros-helper-in-rspec/" itemprop="url">
+                <a class="post-title-link" href="/2013/07/19/shared-examples-and-macros-helper-in-rspec/" itemprop="url">
                   Shared examples and Macros helper in RSpec
                 </a>
               
@@ -506,8 +506,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/07/20/shared-examples-and-macros-helper-in-rspec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/20/shared-examples-and-macros-helper-in-rspec/" itemprop="commentCount"></span>
+                <a href="/2013/07/19/shared-examples-and-macros-helper-in-rspec/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/19/shared-examples-and-macros-helper-in-rspec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -541,7 +541,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">describe <span class="string">"GET index"</span></div><div class="line">  context <span class="string">"with unauthenticated users"</span> <span class="keyword">do</span></div><div class="line">    it_behaves_like <span class="string">"require login"</span> <span class="keyword">do</span></div><div class="line">      let(<span class="symbol">:action</span>) &#123; get <span class="symbol">:index</span> &#125;</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2013/07/20/shared-examples-and-macros-helper-in-rspec/" rel="contents">
+            <a class="btn" href="/2013/07/19/shared-examples-and-macros-helper-in-rspec/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -587,7 +587,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/14/twitter-bootstrap-with-rails/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/13/twitter-bootstrap-with-rails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -609,7 +609,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/07/14/twitter-bootstrap-with-rails/" itemprop="url">
+                <a class="post-title-link" href="/2013/07/13/twitter-bootstrap-with-rails/" itemprop="url">
                   Twitter Bootstrap with Rails
                 </a>
               
@@ -667,8 +667,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/07/14/twitter-bootstrap-with-rails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/14/twitter-bootstrap-with-rails/" itemprop="commentCount"></span>
+                <a href="/2013/07/13/twitter-bootstrap-with-rails/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/13/twitter-bootstrap-with-rails/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -705,7 +705,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">import</span> <span class="string">"bootstrap"</span>;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2013/07/14/twitter-bootstrap-with-rails/" rel="contents">
+            <a class="btn" href="/2013/07/13/twitter-bootstrap-with-rails/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -751,7 +751,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/09/fabrication-object-generation-for-ruby/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/08/fabrication-object-generation-for-ruby/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -773,7 +773,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/07/09/fabrication-object-generation-for-ruby/" itemprop="url">
+                <a class="post-title-link" href="/2013/07/08/fabrication-object-generation-for-ruby/" itemprop="url">
                   Fabrication: Object Generation for Ruby
                 </a>
               
@@ -831,8 +831,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/07/09/fabrication-object-generation-for-ruby/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/09/fabrication-object-generation-for-ruby/" itemprop="commentCount"></span>
+                <a href="/2013/07/08/fabrication-object-generation-for-ruby/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/08/fabrication-object-generation-for-ruby/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -871,7 +871,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Faker::Name.name      <span class="comment">#=&gt; "Christophe Bartell"</span></div><div class="line">Faker::Internet.email <span class="comment">#=&gt; "kirsten.greenholt<span class="doctag">@corkeryfisher</span>.info"</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2013/07/09/fabrication-object-generation-for-ruby/" rel="contents">
+            <a class="btn" href="/2013/07/08/fabrication-object-generation-for-ruby/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -917,7 +917,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/08/basic-controller-specs/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/07/basic-controller-specs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -939,7 +939,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/07/08/basic-controller-specs/" itemprop="url">
+                <a class="post-title-link" href="/2013/07/07/basic-controller-specs/" itemprop="url">
                   Basic Controller Specs
                 </a>
               
@@ -997,8 +997,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/07/08/basic-controller-specs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/08/basic-controller-specs/" itemprop="commentCount"></span>
+                <a href="/2013/07/07/basic-controller-specs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/07/basic-controller-specs/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1210,7 +1210,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -1283,6 +1283,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
 

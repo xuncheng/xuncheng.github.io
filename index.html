@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -76,7 +76,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -121,7 +121,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
     fancybox: true,
     motion: true,
@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-link " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2017/03/22/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -341,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/22/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/22/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/" itemprop="commentCount"></span>
+                <a href="/2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -413,7 +413,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/09/16/bridging-activerecord-and-mongoid/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/09/15/bridging-activerecord-and-mongoid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -435,7 +435,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/09/16/bridging-activerecord-and-mongoid/" itemprop="url">
+                <a class="post-title-link" href="/2015/09/15/bridging-activerecord-and-mongoid/" itemprop="url">
                   Bridging ActiveRecord and Mongoid
                 </a>
               
@@ -493,8 +493,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/09/16/bridging-activerecord-and-mongoid/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/16/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
+                <a href="/2015/09/15/bridging-activerecord-and-mongoid/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/15/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -525,7 +525,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># app/models/user.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></div><div class="line">  has_many <span class="symbol">:visits</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># app/models/visit.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></div><div class="line">  <span class="keyword">include</span> Mongoid::Document</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># in Rails console</span></div><div class="line">User.find(<span class="number">1</span>).visits</div><div class="line"><span class="comment"># =&gt; NoMethodError: undefined method `relation_delegate_class' for Visit:Class</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/09/16/bridging-activerecord-and-mongoid/" rel="contents">
+            <a class="btn" href="/2015/09/15/bridging-activerecord-and-mongoid/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -571,7 +571,7 @@
   
 
   <article class="post post-type-link " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/09/09/generate-uuid-in-javascript/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/09/08/generate-uuid-in-javascript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -650,8 +650,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/09/09/generate-uuid-in-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/09/generate-uuid-in-javascript/" itemprop="commentCount"></span>
+                <a href="/2015/09/08/generate-uuid-in-javascript/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/08/generate-uuid-in-javascript/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -722,7 +722,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/05/29/select-database-records-in-an-arbitrary-order/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/05/28/select-database-records-in-an-arbitrary-order/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -744,7 +744,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/05/29/select-database-records-in-an-arbitrary-order/" itemprop="url">
+                <a class="post-title-link" href="/2015/05/28/select-database-records-in-an-arbitrary-order/" itemprop="url">
                   以任意顺序查询 MySQL 数据库记录
                 </a>
               
@@ -802,8 +802,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/05/29/select-database-records-in-an-arbitrary-order/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/29/select-database-records-in-an-arbitrary-order/" itemprop="commentCount"></span>
+                <a href="/2015/05/28/select-database-records-in-an-arbitrary-order/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/28/select-database-records-in-an-arbitrary-order/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -838,7 +838,7 @@
 <p>但它并没有按照我们预期的想法去工作。那么你是如何保证你的数据以正确的顺序返回呢？</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2015/05/29/select-database-records-in-an-arbitrary-order/" rel="contents">
+            <a class="btn" href="/2015/05/28/select-database-records-in-an-arbitrary-order/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -884,7 +884,7 @@
   
 
   <article class="post post-type-link " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/02/09/format-rails-date-to-match-javascript-date/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/02/08/format-rails-date-to-match-javascript-date/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -963,8 +963,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2015/02/09/format-rails-date-to-match-javascript-date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/02/09/format-rails-date-to-match-javascript-date/" itemprop="commentCount"></span>
+                <a href="/2015/02/08/format-rails-date-to-match-javascript-date/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/02/08/format-rails-date-to-match-javascript-date/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1174,7 +1174,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -1247,6 +1247,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
 

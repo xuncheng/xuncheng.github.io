@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -76,7 +76,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -121,7 +121,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
     fancybox: true,
     motion: true,
@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/15/ruby-blocks-procs-and-lambdas/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -284,7 +284,7 @@
             
               
                 
-                <a class="post-title-link" href="/2014/01/15/ruby-blocks-procs-and-lambdas/" itemprop="url">
+                <a class="post-title-link" href="/2014/01/14/ruby-blocks-procs-and-lambdas/" itemprop="url">
                   Ruby Blocks: Procs and Lambdas
                 </a>
               
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/01/15/ruby-blocks-procs-and-lambdas/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/15/ruby-blocks-procs-and-lambdas/" itemprop="commentCount"></span>
+                <a href="/2014/01/14/ruby-blocks-procs-and-lambdas/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/14/ruby-blocks-procs-and-lambdas/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,7 +375,7 @@
 <p>While it looks like these are all very similar, there are subtle differences that I will cover below.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/01/15/ruby-blocks-procs-and-lambdas/" rel="contents">
+            <a class="btn" href="/2014/01/14/ruby-blocks-procs-and-lambdas/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -421,7 +421,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/04/include-vs-extend-in-ruby/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/03/include-vs-extend-in-ruby/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -443,7 +443,7 @@
             
               
                 
-                <a class="post-title-link" href="/2014/01/04/include-vs-extend-in-ruby/" itemprop="url">
+                <a class="post-title-link" href="/2014/01/03/include-vs-extend-in-ruby/" itemprop="url">
                   Include vs Extend in Ruby
                 </a>
               
@@ -501,8 +501,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/01/04/include-vs-extend-in-ruby/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/04/include-vs-extend-in-ruby/" itemprop="commentCount"></span>
+                <a href="/2014/01/03/include-vs-extend-in-ruby/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/03/include-vs-extend-in-ruby/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -533,7 +533,7 @@
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Foo</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">bar</span></span></div><div class="line">    puts <span class="string">'foobar'</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IncludeModule</span></span></div><div class="line">  <span class="keyword">include</span> Foo</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExtendModule</span></span></div><div class="line">  extend Foo</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plain</span>;</span> <span class="keyword">end</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/01/04/include-vs-extend-in-ruby/" rel="contents">
+            <a class="btn" href="/2014/01/03/include-vs-extend-in-ruby/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -579,7 +579,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/02/keyborad-navigation-between-input-fields-using-jquery/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2014/01/01/keyborad-navigation-between-input-fields-using-jquery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -601,7 +601,7 @@
             
               
                 
-                <a class="post-title-link" href="/2014/01/02/keyborad-navigation-between-input-fields-using-jquery/" itemprop="url">
+                <a class="post-title-link" href="/2014/01/01/keyborad-navigation-between-input-fields-using-jquery/" itemprop="url">
                   Keyboard Navigation Between Input Fields Using jQuery
                 </a>
               
@@ -659,8 +659,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/01/02/keyborad-navigation-between-input-fields-using-jquery/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/02/keyborad-navigation-between-input-fields-using-jquery/" itemprop="commentCount"></span>
+                <a href="/2014/01/01/keyborad-navigation-between-input-fields-using-jquery/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/01/keyborad-navigation-between-input-fields-using-jquery/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -692,7 +692,7 @@
 <script src="//gist.github.com/8219581.js"></script>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2014/01/02/keyborad-navigation-between-input-fields-using-jquery/" rel="contents">
+            <a class="btn" href="/2014/01/01/keyborad-navigation-between-input-fields-using-jquery/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -738,7 +738,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/12/06/install-ruby-on-rails-on-mac-osx-mavericks-10-9/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/12/05/install-ruby-on-rails-on-mac-osx-mavericks-10-9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -760,7 +760,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/12/06/install-ruby-on-rails-on-mac-osx-mavericks-10-9/" itemprop="url">
+                <a class="post-title-link" href="/2013/12/05/install-ruby-on-rails-on-mac-osx-mavericks-10-9/" itemprop="url">
                   Install Ruby On Rails On Mac OSX Mavericks ( 10.9 )
                 </a>
               
@@ -818,8 +818,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/12/06/install-ruby-on-rails-on-mac-osx-mavericks-10-9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/12/06/install-ruby-on-rails-on-mac-osx-mavericks-10-9/" itemprop="commentCount"></span>
+                <a href="/2013/12/05/install-ruby-on-rails-on-mac-osx-mavericks-10-9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/12/05/install-ruby-on-rails-on-mac-osx-mavericks-10-9/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -895,7 +895,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/08/14/developing-static-website-with-middleman/">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/08/13/developing-static-website-with-middleman/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
@@ -917,7 +917,7 @@
             
               
                 
-                <a class="post-title-link" href="/2013/08/14/developing-static-website-with-middleman/" itemprop="url">
+                <a class="post-title-link" href="/2013/08/13/developing-static-website-with-middleman/" itemprop="url">
                   Developing Static Website with Middleman
                 </a>
               
@@ -975,8 +975,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2013/08/14/developing-static-website-with-middleman/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/08/14/developing-static-website-with-middleman/" itemprop="commentCount"></span>
+                <a href="/2013/08/13/developing-static-website-with-middleman/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/08/13/developing-static-website-with-middleman/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1014,7 +1014,7 @@
 <h2 id="Wufoo-the-online-form-builder"><a href="#Wufoo-the-online-form-builder" class="headerlink" title="Wufoo - the online form builder"></a><a href="https://www.wufoo.com/">Wufoo</a> - the online form builder</h2><p>Wufoo is an Internet application that helps anybody build amazing online forms. With Wufoo, you can skip all the hard stuff (because it does it all for you), and start getting things done.</p>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2013/08/14/developing-static-website-with-middleman/" rel="contents">
+            <a class="btn" href="/2013/08/13/developing-static-website-with-middleman/" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1199,7 +1199,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
@@ -1272,6 +1272,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
 
