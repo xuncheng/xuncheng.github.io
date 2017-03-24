@@ -1,0 +1,24 @@
+language: node_js
+node_js: stable
+
+# Travis-CI Caching
+cache:
+  directories:
+    - node_modules
+
+script:
+  - npm run build
+
+deploy:
+  provider: script
+  script: .travis/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: source
+
+branches:
+  only:
+    - source
+
+notifications:
+  email: false
