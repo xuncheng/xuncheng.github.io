@@ -958,7 +958,7 @@ pre .javascript .function {
   bottom: 30px;
 }
 .header {
-  background: #fff;
+  background: transparent;
 }
 .header-inner {
   position: relative;
@@ -1135,8 +1135,8 @@ pre .javascript .function {
     padding-right: 10px;
   }
   .post-body .highlight {
-    margin-left: -40px;
-    margin-right: -40px;
+    margin-left: 0px;
+    margin-right: 0px;
     padding: 0;
   }
   .post-body .highlight .gutter pre {
@@ -1233,6 +1233,7 @@ pre .javascript .function {
 }
 .posts-collapse .collection-title small {
   color: #bbb;
+  margin-left: 5px;
 }
 .posts-collapse .collection-title::before {
   content: " ";
@@ -1374,6 +1375,9 @@ pre .javascript .function {
 .posts-expand .post-meta .post-description {
   font-size: 14px;
   margin-top: 2px;
+}
+.post-wordcount {
+  display: inline-block;
 }
 .post-meta-divider {
   margin: 0 0.5em;
@@ -1699,7 +1703,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #81ffe4;
+  background: #fc0db3;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2104,6 +2108,9 @@ pre .javascript .function {
 .jiathis_style a {
   border: none;
 }
+.fa {
+  font-family: FontAwesome !important;
+}
 .post-spread {
   margin-top: 20px;
   text-align: center;
@@ -2165,7 +2172,6 @@ pre .javascript .function {
 }
 .local-search-popup .search-keyword {
   border-bottom: 1px dashed #f00;
-  font-size: 14px;
   font-weight: bold;
   color: #f00;
 }
@@ -2184,7 +2190,7 @@ pre .javascript .function {
 }
 .local-search-popup .local-search-input-wrapper {
   display: inline-block;
-  width: calc(100% - 60px);
+  width: calc(100% - 90px);
   height: 36px;
   line-height: 36px;
   padding: 0 5px;
@@ -2206,6 +2212,8 @@ pre .javascript .function {
   color: #999;
   height: 36px;
   width: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .local-search-popup .search-icon {
   float: left;
@@ -2214,7 +2222,6 @@ pre .javascript .function {
   border-left: 1px solid #eee;
   float: right;
   cursor: pointer;
-  padding-left: 10px;
 }
 .local-search-popup #no-result {
   position: absolute;

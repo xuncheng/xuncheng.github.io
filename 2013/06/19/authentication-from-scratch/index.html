@@ -13,6 +13,9 @@
 
 
 
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -86,7 +89,7 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Rails,Authentication," />
@@ -98,26 +101,24 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
-<meta name="description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions.
-1.">
+<meta name="description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions. 1.">
+<meta name="keywords" content="Rails,Authentication">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Authentication from Scratch">
 <meta property="og:url" content="https://xuncheng.github.io/2013/06/19/authentication-from-scratch/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
-<meta property="og:description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions.
-1.">
-<meta property="og:updated_time" content="2017-04-18T17:14:41.363Z">
+<meta property="og:description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions. 1.">
+<meta property="og:updated_time" content="2017-05-23T10:01:35.142Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Authentication from Scratch">
-<meta name="twitter:description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions.
-1.">
+<meta name="twitter:description" content="Simple password authentication is easy to do with has_secure_password. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions. 1.">
 
 
 
@@ -151,12 +152,13 @@
 
 
 
-  <title> Authentication from Scratch | Xuncheng Wang </title>
+  <title>Authentication from Scratch | Xuncheng Wang</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
+
 
 
 
@@ -281,14 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Authentication from Scratch
-              
-            
-          </h1>
+          <h1 class="post-title" itemprop="name headline">Authentication from Scratch</h1>
         
 
         <div class="post-meta">
@@ -362,7 +357,6 @@
       </header>
     
 
-
     <div class="post-body" itemprop="articleBody">
 
       
@@ -408,7 +402,7 @@
 <ul>
 <li>4.3 <code>app/helpers/sessions_helper.rb</code></li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">SessionsHelper</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">sign_in</span><span class="params">(user)</span></span></div><div class="line">    cookies.permanent[<span class="symbol">:remember_token</span>] = user.remember_token</div><div class="line">    <span class="keyword">self</span>.current_user = user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">signed_in?</span></span></div><div class="line">    !!current_user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user=</span><span class="params">(user)</span></span></div><div class="line">    @current_user = user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user</span></span></div><div class="line">    @current_user <span class="params">||</span>= User.find_by_remember_token(cookies[<span class="symbol">:remember_token</span>])</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user?</span><span class="params">(user)</span></span></div><div class="line">    user == current_user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">signed_in_user</span> <span class="comment"># check user need sign in</span></span></div><div class="line">    unless signed_in?</div><div class="line">      flash[<span class="symbol">:error</span>] = <span class="string">"Please sign in."</span></div><div class="line">      redirect_to signin_path</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">sign_out</span></span></div><div class="line">    <span class="keyword">self</span>.current_user = <span class="literal">nil</span></div><div class="line">    cookies.delete(<span class="symbol">:remember_token</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">SessionsHelper</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">sign_in</span><span class="params">(user)</span></span></div><div class="line">    cookies.permanent[<span class="symbol">:remember_token</span>] = user.remember_token</div><div class="line">    <span class="keyword">self</span>.current_user = user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">signed_in?</span></span></div><div class="line">    !!current_user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user=</span><span class="params">(user)</span></span></div><div class="line">    @current_user = user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user</span></span></div><div class="line">    @current_user <span class="params">||</span>= User.find_by_remember_token(cookies[<span class="symbol">:remember_token</span>])</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">current_user?</span><span class="params">(user)</span></span></div><div class="line">    user == current_user</div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">signed_in_user</span> <span class="comment"># check user need sign in</span></span></div><div class="line">    <span class="keyword">unless</span> signed_in?</div><div class="line">      flash[<span class="symbol">:error</span>] = <span class="string">"Please sign in."</span></div><div class="line">      redirect_to signin_path</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">sign_out</span></span></div><div class="line">    <span class="keyword">self</span>.current_user = <span class="literal">nil</span></div><div class="line">    cookies.delete(<span class="symbol">:remember_token</span>)</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
 <ul>
 <li>4.4 Including <code>SessionsHelper</code> module into the Application controller</li>
 </ul>
@@ -721,6 +715,10 @@
 
 
 
+
+
+
+
   
   <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
@@ -743,32 +741,32 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
 
 
 
@@ -815,10 +813,6 @@
   
 
 
-
-
-
-  
 
 
 
