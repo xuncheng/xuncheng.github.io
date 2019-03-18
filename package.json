@@ -7,10 +7,12 @@
   },
   "scripts": {
     "build": "hexo generate",
-    "deploy": "hexo deploy"
+    "deploy": "hexo deploy",
+    "dev": "hexo server"
   },
   "dependencies": {
     "hexo": "^3.2.0",
+    "hexo-cli": "1.0.4",
     "hexo-deployer-git": "0.2.0",
     "hexo-generator-archive": "^0.1.4",
     "hexo-generator-category": "^0.1.3",
