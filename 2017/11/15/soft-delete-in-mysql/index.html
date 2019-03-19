@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="这是一篇关于一个 MySQL query optimizer 问题的定位及解决。 公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为： 123SELECT slug FROM products  WHERE id IN (id1, id2, ...)  AND deleted_at IS NULL; 其中，id 是 PRIMARY KEY，deleted_at 记录删除时间，用">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-19T10:01:17.365Z">
+<meta property="og:updated_time" content="2019-03-19T10:04:32.763Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小心 MySQL Soft Delete">
 <meta name="twitter:description" content="这是一篇关于一个 MySQL query optimizer 问题的定位及解决。 公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为： 123SELECT slug FROM products  WHERE id IN (id1, id2, ...)  AND deleted_at IS NULL; 其中，id 是 PRIMARY KEY，deleted_at 记录删除时间，用">
@@ -367,6 +367,7 @@
 <p>公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> slug <span class="keyword">FROM</span> products</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (id1, id2, ...)</span><br><span class="line">  <span class="keyword">AND</span> deleted_at <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 <p>其中，<code>id</code> 是 PRIMARY KEY，<code>deleted_at</code> 记录删除时间，用于实现 Soft Delete，也加了索引。<code>deleted_at</code> 允许为空，为空代表是正常商品，不为空代表“已删除”的商品，同时记录下删除时间。</p>
+<a id="more"></a>
 <p>并且在 Rails 的 ActiveRecord 中设置了 <code>default_scope -&gt; { where(deleted_at: nil) }</code>。</p>
 <p>这条 SQL 语句当然期待一直使用 <code>PRIMARY</code> index 实现查询效率最高，但是，结果却出人意料的成了 slow query。</p>
 <p>使用 MySQL EXPLAIN 来查看查询的执行流程。结果如下：</p>

@@ -366,29 +366,17 @@
 
       
         
-          
-            <p>这是一篇关于一个 MySQL query optimizer 问题的定位及解决。</p>
+          <p>这是一篇关于一个 MySQL query optimizer 问题的定位及解决。</p>
 <p>公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> slug <span class="keyword">FROM</span> products</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (id1, id2, ...)</span><br><span class="line">  <span class="keyword">AND</span> deleted_at <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
 <p>其中，<code>id</code> 是 PRIMARY KEY，<code>deleted_at</code> 记录删除时间，用于实现 Soft Delete，也加了索引。<code>deleted_at</code> 允许为空，为空代表是正常商品，不为空代表“已删除”的商品，同时记录下删除时间。</p>
-<p>并且在 Rails 的 ActiveRecord 中设置了 <code>default_scope -&gt; { where(deleted_at: nil) }</code>。</p>
-<p>这条 SQL 语句当然期待一直使用 <code>PRIMARY</code> index 实现查询效率最高，但是，结果却出人意料的成了 slow query。</p>
-<p>使用 MySQL EXPLAIN 来查看查询的执行流程。结果如下：</p>
-<p>发现当给定的 ID 数量个数为 20 左右时，是正常的使用 PRIMARY index；但是，当给定的 ID 数量个数为 50 左右时，竟然使用了 <code>deleted_at</code> 为空的有几千万行！</p>
-<p>EXPLAIN output 中 Extra 列给出了 <code>Using index condition</code>，也就是 MySQL 只使用了 <code>deleted_at</code> index 的数据，而不用读取任何表数据；这是 MySQL 的 ICP 优化。这个过程相当于：</p>
-<ul>
-<li>读取 <code>deleted_at</code> 索引信息到内存；</li>
-<li>找出 <code>deleted_at</code> 为空的行的 ID （几千万行）；</li>
-<li>在上面几千万行中找出 ID 在给定的 ID 列表中的行；</li>
-</ul>
-<p>显然，这样效率是极其低下的，出现这种令人意外的行为，我猜测是由于 MySQL 最终获取数据不只一种方式，这就需要评估多种方式执行的复杂度。当指定 ID 比较少时，使用 <code>PRIMARY</code> index 这种方式的复杂度相较使用 <code>deleted_at</code> index 小；当指定 ID 比较多时，在 MySQL 评估算法中，前一种方式的复杂度竟然诡异地大于后一种方式。而真正执行语句的情况并非如此，让我们先猜测一下该评估算法的一些行为。</p>
-<ul>
-<li>当指定的 ID 比较多，而且比较离散时，MySQL 认为需要读取更多的 BTree nodes；从 PRIMARY index 中获取到的 ID 后，还要离散的读取表数据，从而过滤 <code>deleted_at</code> 为空的行；</li>
-<li>回头看看使用 <code>deleted_at</code> index 这种方式呢，完全只需要使用 index 数据就可以完成；可以很好地利用 ICP 优化，简直完美。</li>
-</ul>
-<p>等了解到更多的 MySQL 查询优化后，再补充准确的原因吧。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/15/soft-delete-in-mysql/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
