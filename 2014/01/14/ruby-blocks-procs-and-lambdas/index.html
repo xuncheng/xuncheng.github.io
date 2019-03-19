@@ -6,18 +6,18 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -87,21 +87,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Ruby,Foundation,Block,Proc,Lambda," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Ruby,Foundation,Block,Proc,Lambda,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -115,7 +115,8 @@
 <meta property="og:url" content="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas. What are procs and lambdas?123456a_proc = Proc.new &amp;#123; puts &quot;yeah!&quot; &amp;#125;a_proc.call # =&amp;gt; yeah!a_lambda = lambd">
-<meta property="og:updated_time" content="2017-05-23T10:01:35.142Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-19T10:01:17.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ruby Blocks: Procs and Lambdas">
 <meta name="twitter:description" content="In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas. What are procs and lambdas?123456a_proc = Proc.new &amp;#123; puts &quot;yeah!&quot; &amp;#125;a_proc.call # =&amp;gt; yeah!a_lambda = lambd">
@@ -146,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/"/>
+  <link rel="canonical" href="https://xuncheng.github.io/2014/01/14/ruby-blocks-procs-and-lambdas/">
 
 
 
@@ -187,7 +188,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
@@ -270,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -306,7 +307,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -337,8 +338,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2014/01/14/ruby-blocks-procs-and-lambdas/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/01/14/ruby-blocks-procs-and-lambdas/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2014/01/14/ruby-blocks-procs-and-lambdas/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,26 +364,26 @@
 
       
         <p>In this article, we’re going to talk about the Blocks in Ruby: Procs and Lambdas.</p>
-<h3 id="What-are-procs-and-lambdas"><a href="#What-are-procs-and-lambdas" class="headerlink" title="What are procs and lambdas?"></a>What are procs and lambdas?</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a_proc = Proc.new &#123; puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></div><div class="line"></div><div class="line">a_lambda = lambda &#123; puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_lambda = -&gt; &#123; puts <span class="string">"yeah!"</span> &#125; <span class="comment"># short lambda syntax in 1.9</span></div><div class="line">a_lambda.call <span class="comment"># =&gt; yeah!</span></div></pre></td></tr></table></figure>
+<h3 id="What-are-procs-and-lambdas"><a href="#What-are-procs-and-lambdas" class="headerlink" title="What are procs and lambdas?"></a>What are procs and lambdas?</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a_proc = Proc.new &#123; puts <span class="string">"yeah!"</span> &#125;</span><br><span class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></span><br><span class="line"></span><br><span class="line">a_lambda = lambda &#123; puts <span class="string">"yeah!"</span> &#125;</span><br><span class="line">a_lambda = -&gt; &#123; puts <span class="string">"yeah!"</span> &#125; <span class="comment"># short lambda syntax in 1.9</span></span><br><span class="line">a_lambda.call <span class="comment"># =&gt; yeah!</span></span><br></pre></td></tr></table></figure>
 <p>While it looks like these are all very similar, there are subtle differences that I will cover below.</p>
 <a id="more"></a>
 <h3 id="Differences-between-procs-and-lambdas"><a href="#Differences-between-procs-and-lambdas" class="headerlink" title="Differences between procs and lambdas"></a>Differences between procs and lambdas</h3><ol>
 <li><strong>Lambdas check the number of arguments, while procs do not</strong></li>
 </ol>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a_proc = Proc.new &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></div><div class="line"></div><div class="line">a_lambda = lambda &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</div><div class="line">a_lambda.call <span class="comment"># =&gt; wrong number of arguments (0 for 1) (ArgumentError)</span></div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a_proc = Proc.new &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</span><br><span class="line">a_proc.call <span class="comment"># =&gt; yeah!</span></span><br><span class="line"></span><br><span class="line">a_lambda = lambda &#123; <span class="params">|s|</span> puts <span class="string">"yeah!"</span> &#125;</span><br><span class="line">a_lambda.call <span class="comment"># =&gt; wrong number of arguments (0 for 1) (ArgumentError)</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li><strong>Lambdas and procs treat <em>return</em> keyword differently</strong></li>
 </ol>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proc</span></span></div><div class="line">  Proc.new &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_lambda</span></span></div><div class="line">  lambda &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</div><div class="line">  <span class="keyword">return</span> <span class="number">0</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">puts test_proc <span class="comment"># =&gt; 1</span></div><div class="line">puts test_lambda <span class="comment"># =&gt; 0</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_proc</span></span></span><br><span class="line">  Proc.new &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_lambda</span></span></span><br><span class="line">  lambda &#123; <span class="keyword">return</span> <span class="number">1</span> &#125;.call</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">puts test_proc <span class="comment"># =&gt; 1</span></span><br><span class="line">puts test_lambda <span class="comment"># =&gt; 0</span></span><br></pre></td></tr></table></figure>
 <p>As you can see, the proc returned from the <code>test_proc</code> method, and the lambda didn’t.</p>
 <h3 id="Passing-a-block-to-a-method-in-different-ways"><a href="#Passing-a-block-to-a-method-in-different-ways" class="headerlink" title="Passing a block to a method in different ways"></a>Passing a block to a method in different ways</h3><ul>
 <li><strong>With the &amp; (ampersand) symbol :</strong></li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg, &amp;block)</span></span></div><div class="line">  puts arg</div><div class="line">  block.call</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</div><div class="line"><span class="comment"># =&gt; Hi</span></div><div class="line"><span class="comment"># =&gt; I'm a Proc!</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg, &amp;block)</span></span></span><br><span class="line">  puts arg</span><br><span class="line">  block.call</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</span><br><span class="line"><span class="comment"># =&gt; Hi</span></span><br><span class="line"><span class="comment"># =&gt; I'm a Proc!</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><strong>With <em>yield</em> keywbowrd</strong></li>
 </ul>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg)</span></span></div><div class="line">  puts arg</div><div class="line">  <span class="keyword">yield</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</div><div class="line"><span class="comment"># =&gt; Hi</span></div><div class="line"><span class="comment"># =&gt; I'm a Proc!</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">a_method</span><span class="params">(arg)</span></span></span><br><span class="line">  puts arg</span><br><span class="line">  <span class="keyword">yield</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">a_method(<span class="string">'Hi'</span>) &#123; puts <span class="string">"I'm a Proc!"</span> &#125;</span><br><span class="line"><span class="comment"># =&gt; Hi</span></span><br><span class="line"><span class="comment"># =&gt; I'm a Proc!</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -516,7 +516,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -527,9 +527,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/xuncheng.jpg"
-               alt="Xuncheng Wang" />
+          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
           <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
            
               <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
@@ -540,7 +538,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -637,10 +635,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

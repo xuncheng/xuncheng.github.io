@@ -6,18 +6,18 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -87,21 +87,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="RSpec,Shared examples,Macros," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="RSpec,Shared examples,Macros,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -115,7 +115,8 @@
 <meta property="og:url" content="https://xuncheng.github.io/2013/07/19/shared-examples-and-macros-helper-in-rspec/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="Shared examplesRSpec gives us a nice way to clean up this replication with shared examples. Setting up a shared example is pretty simple-first, create a block for the examples as follow. adding a new">
-<meta property="og:updated_time" content="2017-05-23T10:01:35.142Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-19T10:01:17.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shared examples and Macros helper in RSpec">
 <meta name="twitter:description" content="Shared examplesRSpec gives us a nice way to clean up this replication with shared examples. Setting up a shared example is pretty simple-first, create a block for the examples as follow. adding a new">
@@ -146,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/2013/07/19/shared-examples-and-macros-helper-in-rspec/"/>
+  <link rel="canonical" href="https://xuncheng.github.io/2013/07/19/shared-examples-and-macros-helper-in-rspec/">
 
 
 
@@ -187,7 +188,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
@@ -270,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -306,7 +307,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -337,8 +338,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/19/shared-examples-and-macros-helper-in-rspec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/19/shared-examples-and-macros-helper-in-rspec/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/19/shared-examples-and-macros-helper-in-rspec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,15 +365,15 @@
       
         <h2 id="Shared-examples"><a href="#Shared-examples" class="headerlink" title="Shared examples"></a>Shared examples</h2><p>RSpec gives us a nice way to clean up this replication with <em>shared examples</em>. Setting up a shared example is pretty simple-first, create a block for the examples as follow.</p>
 <p>adding a new file <strong>app/spec/support/shared_examples.rb</strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">shared_examples <span class="string">"require login"</span> <span class="keyword">do</span></div><div class="line">  it <span class="string">"redirects to the user sign in path"</span> <span class="keyword">do</span></div><div class="line">    action <span class="comment"># defined in the spec  	</span></div><div class="line">    expect(response).to redirect_to signin_path</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_examples <span class="string">"require login"</span> <span class="keyword">do</span></span><br><span class="line">  it <span class="string">"redirects to the user sign in path"</span> <span class="keyword">do</span></span><br><span class="line">    action <span class="comment"># defined in the spec  	</span></span><br><span class="line">    expect(response).to redirect_to signin_path</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>and use it (in <strong>app/spec/controllers/queue_videos_controller_spec.rb</strong>)</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">describe <span class="string">"GET index"</span></div><div class="line">  context <span class="string">"with unauthenticated users"</span> <span class="keyword">do</span></div><div class="line">    it_behaves_like <span class="string">"require login"</span> <span class="keyword">do</span></div><div class="line">      let(<span class="symbol">:action</span>) &#123; get <span class="symbol">:index</span> &#125;</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">describe <span class="string">"GET index"</span></span><br><span class="line">  context <span class="string">"with unauthenticated users"</span> <span class="keyword">do</span></span><br><span class="line">    it_behaves_like <span class="string">"require login"</span> <span class="keyword">do</span></span><br><span class="line">      let(<span class="symbol">:action</span>) &#123; get <span class="symbol">:index</span> &#125;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="Macros-helper"><a href="#Macros-helper" class="headerlink" title="Macros helper"></a>Macros helper</h2><p>Macros are an easy way to create methods which maybe used across your entire test suite. Macons conventionally go into the <em>spec/support</em> directory as a module to be included in Rspec’s configuration.</p>
 <p>adding a new file <strong>app/spec/support/macros.rb</strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_user_session</span><span class="params">(user)</span></span></div><div class="line">  cookies[<span class="symbol">:remember_token</span>] = user.remember_token</div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_user_session</span><span class="params">(user)</span></span></span><br><span class="line">  cookies[<span class="symbol">:remember_token</span>] = user.remember_token</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>and use it (in <strong>app/spec/controllers/queue_videos_controller_spec.rb</strong>)</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">describe <span class="string">"GET index"</span> <span class="keyword">do</span></div><div class="line">  it <span class="string">"renders the :index template for authenticated users"</span> <span class="keyword">do</span></div><div class="line">    current_user = Fabricate(<span class="symbol">:user</span>)</div><div class="line">    set_user_session(current_user)</div><div class="line">    queue_video = Fabricate(<span class="symbol">:queue_video</span>, <span class="symbol">user:</span> current_user)</div><div class="line">    get <span class="symbol">:index</span></div><div class="line">    expect(response).to render_template <span class="symbol">:index</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">describe <span class="string">"GET index"</span> <span class="keyword">do</span></span><br><span class="line">  it <span class="string">"renders the :index template for authenticated users"</span> <span class="keyword">do</span></span><br><span class="line">    current_user = Fabricate(<span class="symbol">:user</span>)</span><br><span class="line">    set_user_session(current_user)</span><br><span class="line">    queue_video = Fabricate(<span class="symbol">:queue_video</span>, <span class="symbol">user:</span> current_user)</span><br><span class="line">    get <span class="symbol">:index</span></span><br><span class="line">    expect(response).to render_template <span class="symbol">:index</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -502,7 +502,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -513,9 +513,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/xuncheng.jpg"
-               alt="Xuncheng Wang" />
+          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
           <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
            
               <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
@@ -526,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -623,10 +621,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

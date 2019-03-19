@@ -6,18 +6,18 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -87,21 +87,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Rails,RSpec," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Rails,RSpec,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -115,7 +115,8 @@
 <meta property="og:url" content="https://xuncheng.github.io/2013/07/21/feature-specs-in-rspec/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="So far we’ve spent a lot of time going over controller and model testing, and use fabrication to generate test data. Now it’s time to put everything together for ingegration testing-in other words, ma">
-<meta property="og:updated_time" content="2017-05-23T10:01:35.142Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-19T10:01:17.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Feature specs in RSpec">
 <meta name="twitter:description" content="So far we’ve spent a lot of time going over controller and model testing, and use fabrication to generate test data. Now it’s time to put everything together for ingegration testing-in other words, ma">
@@ -146,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/2013/07/21/feature-specs-in-rspec/"/>
+  <link rel="canonical" href="https://xuncheng.github.io/2013/07/21/feature-specs-in-rspec/">
 
 
 
@@ -187,7 +188,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
@@ -270,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -306,7 +307,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -337,8 +338,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2013/07/21/feature-specs-in-rspec/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2013/07/21/feature-specs-in-rspec/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/21/feature-specs-in-rspec/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,27 +366,27 @@
         <p>So far we’ve spent <em>a lot of</em> time going over controller and model testing, and use <strong>fabrication</strong> to generate test data. Now it’s time to put everything together for ingegration testing-in other words, makding sure thoes models and controllers all play nicely with other models and controllers in the application. These tests are called <em>feature specs</em> in RSpec. </p>
 <p>A feature spec covers more ground, and represents how actual users will interact with your code. We write feature specs with <em>Cypybara</em>, an extremely useful Ruby library to help define steps of a feature spec and simulate real-world use of your application.</p>
 <h2 id="Add-additional-gems"><a href="#Add-additional-gems" class="headerlink" title="Add additional gems"></a>Add additional gems</h2><p>add <code>cypybara</code> and <code>launchy</code> in the <strong>Gemfile</strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">group <span class="symbol">:test</span> <span class="keyword">do</span></div><div class="line">  gem <span class="string">"faker"</span>, <span class="string">"~&gt; 1.1.2"</span></div><div class="line">  gem <span class="string">"capybara"</span>, <span class="string">"~&gt; 2.1.0"</span></div><div class="line">  gem <span class="string">"launchy"</span>, <span class="string">"~&gt; 2.2.0"</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">group <span class="symbol">:test</span> <span class="keyword">do</span></span><br><span class="line">  gem <span class="string">"faker"</span>, <span class="string">"~&gt; 1.1.2"</span></span><br><span class="line">  gem <span class="string">"capybara"</span>, <span class="string">"~&gt; 2.1.0"</span></span><br><span class="line">  gem <span class="string">"launchy"</span>, <span class="string">"~&gt; 2.2.0"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>and run <code>$ bundle install</code></p>
 <h2 id="A-basic-feature-spec"><a href="#A-basic-feature-spec" class="headerlink" title="A basic feature spec"></a>A basic feature spec</h2><p>Capybara lets you simulate how a user would interact with your application throgh a web browser, using a series of easy-to-understand methods like <strong>click_link</strong>, <strong>fill_in</strong>, and <strong>visit</strong>. These methods let you to descirbe a test scenario for your app.</p>
 <p>add a new file <strong>app/spec/features/user_sign_in_spec.rb</strong></p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">require</span> <span class="string">'spec_helper'</span></div><div class="line"></div><div class="line">feature <span class="string">"User sign in"</span> <span class="keyword">do</span></div><div class="line">  scenario <span class="string">"with registered user"</span> <span class="keyword">do</span></div><div class="line">    user = Fabricate(<span class="symbol">:user</span>)</div><div class="line">    visit signin_path</div><div class="line">    fill_in <span class="string">"Email"</span>, <span class="symbol">with:</span> user.email</div><div class="line">    fill_in <span class="string">"Password"</span>, <span class="symbol">with:</span> user.password</div><div class="line">    click_button <span class="string">"Sign in"</span></div><div class="line">    expect(page).to have_content <span class="string">"Sign in successfully."</span></div><div class="line">    expect(page).to have_content user.full_name</div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'spec_helper'</span></span><br><span class="line"></span><br><span class="line">feature <span class="string">"User sign in"</span> <span class="keyword">do</span></span><br><span class="line">  scenario <span class="string">"with registered user"</span> <span class="keyword">do</span></span><br><span class="line">    user = Fabricate(<span class="symbol">:user</span>)</span><br><span class="line">    visit signin_path</span><br><span class="line">    fill_in <span class="string">"Email"</span>, <span class="symbol">with:</span> user.email</span><br><span class="line">    fill_in <span class="string">"Password"</span>, <span class="symbol">with:</span> user.password</span><br><span class="line">    click_button <span class="string">"Sign in"</span></span><br><span class="line">    expect(page).to have_content <span class="string">"Sign in successfully."</span></span><br><span class="line">    expect(page).to have_content user.full_name</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h2 id="A-more-complicated-feature-spec"><a href="#A-more-complicated-feature-spec" class="headerlink" title="A more complicated feature spec"></a>A more complicated feature spec</h2><ol>
 <li>refactor <code>user_sign_in</code> feature spec using <em>macros</em></li>
 </ol>
 <p>define <code>sign_in</code> method (in <strong>app/spec/support/macros.rb</strong> file)</p>
-<p>Gist: <a href="https://gist.github.com/xuncheng/6051655" target="_blank" rel="external">https://gist.github.com/xuncheng/6051655</a></p>
+<p>Gist: <a href="https://gist.github.com/xuncheng/6051655" target="_blank" rel="noopener">https://gist.github.com/xuncheng/6051655</a></p>
 <script src="//gist.github.com/6051655.js"></script>
 <p>add a new file <strong>app/spec/features/user_interact_with_queue_spec.rb</strong></p>
-<p>Gist: <a href="https://gist.github.com/xuncheng/6051661" target="_blank" rel="external">https://gist.github.com/xuncheng/6051661</a></p>
+<p>Gist: <a href="https://gist.github.com/xuncheng/6051661" target="_blank" rel="noopener">https://gist.github.com/xuncheng/6051661</a></p>
 <script src="//gist.github.com/6051661.js"></script>
 <h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><ol>
-<li><a href="https://github.com/jnicklas/capybara" target="_blank" rel="external">https://github.com/jnicklas/capybara</a></li>
-<li><a href="http://railscasts.com/episodes/257-request-specs-and-capybara" target="_blank" rel="external">http://railscasts.com/episodes/257-request-specs-and-capybara</a></li>
-<li><a href="https://www.relishapp.com/rspec/rspec-rails/docs/feature-specs/feature-spec" target="_blank" rel="external">https://www.relishapp.com/rspec/rspec-rails/docs/feature-specs/feature-spec</a></li>
-<li><a href="https://www.relishapp.com/rspec/rspec-rails/v/2-13/docs/request-specs/request-speec" target="_blank" rel="external">https://www.relishapp.com/rspec/rspec-rails/v/2-13/docs/request-specs/request-speec</a></li>
-<li><a href="http://www.w3schools.com/xpath/xpath_syntaxx.asp" target="_blank" rel="external">http://www.w3schools.com/xpath/xpath_syntaxx.asp</a></li>
+<li><a href="https://github.com/jnicklas/capybara" target="_blank" rel="noopener">https://github.com/jnicklas/capybara</a></li>
+<li><a href="http://railscasts.com/episodes/257-request-specs-and-capybara" target="_blank" rel="noopener">http://railscasts.com/episodes/257-request-specs-and-capybara</a></li>
+<li><a href="https://www.relishapp.com/rspec/rspec-rails/docs/feature-specs/feature-spec" target="_blank" rel="noopener">https://www.relishapp.com/rspec/rspec-rails/docs/feature-specs/feature-spec</a></li>
+<li><a href="https://www.relishapp.com/rspec/rspec-rails/v/2-13/docs/request-specs/request-speec" target="_blank" rel="noopener">https://www.relishapp.com/rspec/rspec-rails/v/2-13/docs/request-specs/request-speec</a></li>
+<li><a href="http://www.w3schools.com/xpath/xpath_syntaxx.asp" target="_blank" rel="noopener">http://www.w3schools.com/xpath/xpath_syntaxx.asp</a></li>
 </ol>
 
       
@@ -514,7 +514,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -525,9 +525,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/xuncheng.jpg"
-               alt="Xuncheng Wang" />
+          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
           <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
            
               <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
@@ -538,7 +536,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -635,10 +633,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

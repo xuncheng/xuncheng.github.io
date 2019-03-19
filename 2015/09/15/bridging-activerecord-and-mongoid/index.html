@@ -6,18 +6,18 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -87,21 +87,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Rails,Mongoid," />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Rails,Mongoid,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -115,7 +115,8 @@
 <meta property="og:url" content="https://xuncheng.github.io/2015/09/15/bridging-activerecord-and-mongoid/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="最近我们的项目中同时用了 MySQL 和 MongoDB 数据库，但不能直接使用Rails提供的 has_many 和 belongs_to 在 ActiveRecord models 和 Mongoid documents 之间建立联系(associations)。 12345678910111213# app/models/user.rbclass User &amp;lt; ActiveRecord">
-<meta property="og:updated_time" content="2017-05-23T10:01:35.142Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-19T10:01:17.365Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bridging ActiveRecord and Mongoid">
 <meta name="twitter:description" content="最近我们的项目中同时用了 MySQL 和 MongoDB 数据库，但不能直接使用Rails提供的 has_many 和 belongs_to 在 ActiveRecord models 和 Mongoid documents 之间建立联系(associations)。 12345678910111213# app/models/user.rbclass User &amp;lt; ActiveRecord">
@@ -146,7 +147,7 @@
 
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/2015/09/15/bridging-activerecord-and-mongoid/"/>
+  <link rel="canonical" href="https://xuncheng.github.io/2015/09/15/bridging-activerecord-and-mongoid/">
 
 
 
@@ -187,7 +188,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
@@ -270,7 +271,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -306,7 +307,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -337,8 +338,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/09/15/bridging-activerecord-and-mongoid/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/15/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/15/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -364,28 +364,28 @@
 
       
         <p>最近我们的项目中同时用了 MySQL 和 MongoDB 数据库，但不能直接使用Rails提供的 <code>has_many</code> 和 <code>belongs_to</code> 在 ActiveRecord models 和 Mongoid documents 之间建立联系(associations)。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># app/models/user.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></div><div class="line">  has_many <span class="symbol">:visits</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># app/models/visit.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></div><div class="line">  <span class="keyword">include</span> Mongoid::Document</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># in Rails console</span></div><div class="line">User.find(<span class="number">1</span>).visits</div><div class="line"><span class="comment"># =&gt; NoMethodError: undefined method `relation_delegate_class' for Visit:Class</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app/models/user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:visits</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># app/models/visit.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></span><br><span class="line">  <span class="keyword">include</span> Mongoid::Document</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># in Rails console</span></span><br><span class="line">User.find(<span class="number">1</span>).visits</span><br><span class="line"><span class="comment"># =&gt; NoMethodError: undefined method `relation_delegate_class' for Visit:Class</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>为了更方便的在 ActiveRecord models 和 Mongoid documents 之间建立联系(associations)，我们可以写一点代码去封装它：</p>
 <ol>
 <li>在 ActiveRecord models 里实现 <code>has_many_documents</code>:</li>
 </ol>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># lib/extensions/active_record/has_many_documents.rb</span></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Extensions::ActiveRecord::HasManyDocuments</span></span></div><div class="line">  extend ActiveSupport::Concern</div><div class="line"></div><div class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_many_documents</span><span class="params">(association_name, options = &#123;&#125;)</span></span></div><div class="line">      class_eval <span class="string">%&lt;</span></div><div class="line">        def <span class="subst">#&#123;association_name&#125;</span></div><div class="line">          <span class="subst">#&#123;association_name.to_s.singularize.classify&#125;</span>.where(<span class="subst">#&#123;name.underscore&#125;</span>_id: id)</div><div class="line">        end</div><div class="line">      &gt;</div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line">ActiveRecord::Base.send(<span class="symbol">:include</span>, Extensions::ActiveRecord::HasManyDocuments)</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lib/extensions/active_record/has_many_documents.rb</span></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Extensions::ActiveRecord::HasManyDocuments</span></span></span><br><span class="line">  extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_many_documents</span><span class="params">(association_name, options = &#123;&#125;)</span></span></span><br><span class="line">      class_eval <span class="string">%&lt;</span></span><br><span class="line"><span class="string">        def <span class="subst">#&#123;association_name&#125;</span></span></span><br><span class="line"><span class="string">          <span class="subst">#&#123;association_name.to_s.singularize.classify&#125;</span>.where(<span class="subst">#&#123;name.underscore&#125;</span>_id: id)</span></span><br><span class="line"><span class="string">        end</span></span><br><span class="line"><span class="string">      &gt;</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">ActiveRecord::Base.send(<span class="symbol">:include</span>, Extensions::ActiveRecord::HasManyDocuments)</span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li>在 <code>initializer</code> 里载入 <code>has_many_documents</code> 文件:</li>
 </ol>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># config/initializers/extensions.rb</span></div><div class="line"><span class="keyword">require</span> File.join(Rails.root, <span class="string">'lib'</span>, <span class="string">'extensions'</span>, <span class="string">'active_record'</span>, <span class="string">'has_many_documents'</span>)</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/initializers/extensions.rb</span></span><br><span class="line"><span class="keyword">require</span> File.join(Rails.root, <span class="string">'lib'</span>, <span class="string">'extensions'</span>, <span class="string">'active_record'</span>, <span class="string">'has_many_documents'</span>)</span><br></pre></td></tr></table></figure>
+<ol start="3">
 <li>在 Mongoid documents 里实现 <code>belongs_to_record</code>:</li>
 </ol>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># app/models/concerns/mongoid/active_record_bridge.rb</span></div><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Mongoid</span></span></div><div class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ActiveRecordBridge</span></span></div><div class="line">    extend ActiveSupport::Concern</div><div class="line"></div><div class="line">    included <span class="keyword">do</span></div><div class="line">      <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">belongs_to_record</span><span class="params">(association_name, options=&#123;&#125;)</span></span></div><div class="line">        association_class = options[<span class="symbol">:class_name</span>] <span class="params">||</span> association_name.to_s.singularize.classify</div><div class="line">        class_eval <span class="string">%&lt;</span></div><div class="line">          field :<span class="subst">#&#123;association_name&#125;</span>_id, type: Integer</div><div class="line">          index(<span class="subst">#&#123;association_name&#125;</span>_id: 1)</div><div class="line">          def <span class="subst">#&#123;association_name&#125;</span></div><div class="line">            @<span class="subst">#&#123;association_name&#125;</span> ||= <span class="subst">#&#123;association_class&#125;</span>.where(id: <span class="subst">#&#123;association_name&#125;</span>_id).first if <span class="subst">#&#123;association_name&#125;</span>_id</div><div class="line">          end</div><div class="line">          def <span class="subst">#&#123;association_name&#125;</span>=(object)</div><div class="line">            @<span class="subst">#&#123;association_name&#125;</span> = object</div><div class="line">            self.<span class="subst">#&#123;association_name&#125;</span>_id = object.try :id</div><div class="line">          end</div><div class="line">        &gt;</div><div class="line">      <span class="keyword">end</span></div><div class="line">    <span class="keyword">end</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app/models/concerns/mongoid/active_record_bridge.rb</span></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Mongoid</span></span></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ActiveRecordBridge</span></span></span><br><span class="line">    extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">    included <span class="keyword">do</span></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">self</span>.<span class="title">belongs_to_record</span><span class="params">(association_name, options=&#123;&#125;)</span></span></span><br><span class="line">        association_class = options[<span class="symbol">:class_name</span>] <span class="params">||</span> association_name.to_s.singularize.classify</span><br><span class="line">        class_eval <span class="string">%&lt;</span></span><br><span class="line"><span class="string">          field :<span class="subst">#&#123;association_name&#125;</span>_id, type: Integer</span></span><br><span class="line"><span class="string">          index(<span class="subst">#&#123;association_name&#125;</span>_id: 1)</span></span><br><span class="line"><span class="string">          def <span class="subst">#&#123;association_name&#125;</span></span></span><br><span class="line"><span class="string">            @<span class="subst">#&#123;association_name&#125;</span> ||= <span class="subst">#&#123;association_class&#125;</span>.where(id: <span class="subst">#&#123;association_name&#125;</span>_id).first if <span class="subst">#&#123;association_name&#125;</span>_id</span></span><br><span class="line"><span class="string">          end</span></span><br><span class="line"><span class="string">          def <span class="subst">#&#123;association_name&#125;</span>=(object)</span></span><br><span class="line"><span class="string">            @<span class="subst">#&#123;association_name&#125;</span> = object</span></span><br><span class="line"><span class="string">            self.<span class="subst">#&#123;association_name&#125;</span>_id = object.try :id</span></span><br><span class="line"><span class="string">          end</span></span><br><span class="line"><span class="string">        &gt;</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>现在你就可以在 ActiveRecord models 和 Mongoid documents 里定义 <code>1:N</code> 的关系了:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># app/models/user.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></div><div class="line">  has_many_documents <span class="symbol">:visits</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># app/models/visit.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></div><div class="line">  <span class="keyword">include</span> Mongoid::Document</div><div class="line">  <span class="keyword">include</span> Mongoid::ActiveRecordBridge</div><div class="line"></div><div class="line">  belongs_to_record <span class="symbol">:user</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># in Rails console</span></div><div class="line">User.find(<span class="number">1</span>).visits</div><div class="line">=&gt; #&lt;Mongoid::Criteria</div><div class="line">     selector: &#123;"user_id"=&gt;<span class="number">1</span>&#125;</div><div class="line">     <span class="symbol">options:</span>  &#123;&#125;</div><div class="line">     <span class="class"><span class="keyword">class</span>:    <span class="title">Visit</span></span></div><div class="line">     <span class="symbol">embedded:</span> <span class="literal">false</span>&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app/models/user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many_documents <span class="symbol">:visits</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># app/models/visit.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></span><br><span class="line">  <span class="keyword">include</span> Mongoid::Document</span><br><span class="line">  <span class="keyword">include</span> Mongoid::ActiveRecordBridge</span><br><span class="line"></span><br><span class="line">  belongs_to_record <span class="symbol">:user</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># in Rails console</span></span><br><span class="line">User.find(<span class="number">1</span>).visits</span><br><span class="line">=&gt; #&lt;Mongoid::Criteria</span><br><span class="line">     selector: &#123;"user_id"=&gt;<span class="number">1</span>&#125;</span><br><span class="line">     <span class="symbol">options:</span>  &#123;&#125;</span><br><span class="line">     <span class="class"><span class="keyword">class</span>:    <span class="title">Visit</span></span></span><br><span class="line">     <span class="symbol">embedded:</span> <span class="literal">false</span>&gt;</span><br></pre></td></tr></table></figure>
 <p>现在一切工作正常，我在这篇文章里只简单的定义了 <code>1:N</code> 的关系，如果你的项目里还有更多的需求的话，也可以参考这篇文章的方法自行扩展。</p>
 <h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><ol>
-<li><a href="http://hashrocket.com/blog/posts/bridging-activerecord-and-mongoid" target="_blank" rel="external">http://hashrocket.com/blog/posts/bridging-activerecord-and-mongoid</a></li>
-<li><a href="https://gist.github.com/xuncheng/cf1a0352e7c0d0849072" target="_blank" rel="external">https://gist.github.com/xuncheng/cf1a0352e7c0d0849072</a></li>
-<li><a href="https://gist.github.com/jponc/0fbaf4b5aa4ad7cafa9e" target="_blank" rel="external">https://gist.github.com/jponc/0fbaf4b5aa4ad7cafa9e</a></li>
+<li><a href="http://hashrocket.com/blog/posts/bridging-activerecord-and-mongoid" target="_blank" rel="noopener">http://hashrocket.com/blog/posts/bridging-activerecord-and-mongoid</a></li>
+<li><a href="https://gist.github.com/xuncheng/cf1a0352e7c0d0849072" target="_blank" rel="noopener">https://gist.github.com/xuncheng/cf1a0352e7c0d0849072</a></li>
+<li><a href="https://gist.github.com/jponc/0fbaf4b5aa4ad7cafa9e" target="_blank" rel="noopener">https://gist.github.com/jponc/0fbaf4b5aa4ad7cafa9e</a></li>
 </ol>
 
       
@@ -513,7 +513,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -524,9 +524,7 @@
 
       <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/xuncheng.jpg"
-               alt="Xuncheng Wang" />
+          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
           <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
            
               <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
@@ -537,7 +535,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -634,10 +632,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

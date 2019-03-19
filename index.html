@@ -6,18 +6,18 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -35,7 +35,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -87,21 +87,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
 
 
 
@@ -114,6 +114,7 @@
 <meta property="og:url" content="https://xuncheng.github.io/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
 <meta property="og:description" content="A Web Developer&apos;s Diary.">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xuncheng Wang">
 <meta name="twitter:description" content="A Web Developer&apos;s Diary.">
@@ -144,7 +145,7 @@
 
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/"/>
+  <link rel="canonical" href="https://xuncheng.github.io/">
 
 
 
@@ -187,7 +188,7 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
@@ -265,12 +266,175 @@
   
   
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2017/11/15/soft-delete-in-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/15/soft-delete-in-mysql/" itemprop="url">小心 MySQL Soft Delete</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-16T00:00:00+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/15/soft-delete-in-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/11/15/soft-delete-in-mysql/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一篇关于一个 MySQL query optimizer 问题的定位及解决。</p>
+<p>公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> slug <span class="keyword">FROM</span> products</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (id1, id2, ...)</span><br><span class="line">  <span class="keyword">AND</span> deleted_at <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>id</code> 是 PRIMARY KEY，<code>deleted_at</code> 记录删除时间，用于实现 Soft Delete，也加了索引。<code>deleted_at</code> 允许为空，为空代表是正常商品，不为空代表“已删除”的商品，同时记录下删除时间。</p>
+<p>并且在 Rails 的 ActiveRecord 中设置了 <code>default_scope -&gt; { where(deleted_at: nil) }</code>。</p>
+<p>这条 SQL 语句当然期待一直使用 <code>PRIMARY</code> index 实现查询效率最高，但是，结果却出人意料的成了 slow query。</p>
+<p>使用 MySQL EXPLAIN 来查看查询的执行流程。结果如下：</p>
+<p>发现当给定的 ID 数量个数为 20 左右时，是正常的使用 PRIMARY index；但是，当给定的 ID 数量个数为 50 左右时，竟然使用了 <code>deleted_at</code> 为空的有几千万行！</p>
+<p>EXPLAIN output 中 Extra 列给出了 <code>Using index condition</code>，也就是 MySQL 只使用了 <code>deleted_at</code> index 的数据，而不用读取任何表数据；这是 MySQL 的 ICP 优化。这个过程相当于：</p>
+<ul>
+<li>读取 <code>deleted_at</code> 索引信息到内存；</li>
+<li>找出 <code>deleted_at</code> 为空的行的 ID （几千万行）；</li>
+<li>在上面几千万行中找出 ID 在给定的 ID 列表中的行；</li>
+</ul>
+<p>显然，这样效率是极其低下的，出现这种令人意外的行为，我猜测是由于 MySQL 最终获取数据不只一种方式，这就需要评估多种方式执行的复杂度。当指定 ID 比较少时，使用 <code>PRIMARY</code> index 这种方式的复杂度相较使用 <code>deleted_at</code> index 小；当指定 ID 比较多时，在 MySQL 评估算法中，前一种方式的复杂度竟然诡异地大于后一种方式。而真正执行语句的情况并非如此，让我们先猜测一下该评估算法的一些行为。</p>
+<ul>
+<li>当指定的 ID 比较多，而且比较离散时，MySQL 认为需要读取更多的 BTree nodes；从 PRIMARY index 中获取到的 ID 后，还要离散的读取表数据，从而过滤 <code>deleted_at</code> 为空的行；</li>
+<li>回头看看使用 <code>deleted_at</code> index 这种方式呢，完全只需要使用 index 数据就可以完成；可以很好地利用 ICP 优化，简直完美。</li>
+</ul>
+<p>等了解到更多的 MySQL 查询优化后，再补充准确的原因吧。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-link " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -312,7 +476,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -343,8 +507,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/03/21/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -418,7 +581,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -456,7 +619,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -487,8 +650,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/09/15/bridging-activerecord-and-mongoid/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/15/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/15/bridging-activerecord-and-mongoid/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -515,7 +677,7 @@
       
         
           <p>最近我们的项目中同时用了 MySQL 和 MongoDB 数据库，但不能直接使用Rails提供的 <code>has_many</code> 和 <code>belongs_to</code> 在 ActiveRecord models 和 Mongoid documents 之间建立联系(associations)。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># app/models/user.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></div><div class="line">  has_many <span class="symbol">:visits</span></div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># app/models/visit.rb</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></div><div class="line">  <span class="keyword">include</span> Mongoid::Document</div><div class="line"><span class="keyword">end</span></div><div class="line"></div><div class="line"><span class="comment"># in Rails console</span></div><div class="line">User.find(<span class="number">1</span>).visits</div><div class="line"><span class="comment"># =&gt; NoMethodError: undefined method `relation_delegate_class' for Visit:Class</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># app/models/user.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  has_many <span class="symbol">:visits</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># app/models/visit.rb</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Visit</span></span></span><br><span class="line">  <span class="keyword">include</span> Mongoid::Document</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># in Rails console</span></span><br><span class="line">User.find(<span class="number">1</span>).visits</span><br><span class="line"><span class="comment"># =&gt; NoMethodError: undefined method `relation_delegate_class' for Visit:Class</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2015/09/15/bridging-activerecord-and-mongoid/" rel="contents">
@@ -568,7 +730,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -610,7 +772,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -641,8 +803,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/09/08/generate-uuid-in-javascript/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/09/08/generate-uuid-in-javascript/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/09/08/generate-uuid-in-javascript/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -716,7 +877,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content>
       <meta itemprop="image" content="/uploads/xuncheng.jpg">
     </span>
 
@@ -754,7 +915,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -785,8 +946,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2015/05/28/select-database-records-in-an-arbitrary-order/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/05/28/select-database-records-in-an-arbitrary-order/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2015/05/28/select-database-records-in-an-arbitrary-order/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -813,10 +973,10 @@
       
         
           <p>在 Rails 里，你可以很方便的通过一组 ID 从数据库中获取数据:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Note.where(<span class="symbol">id:</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</div><div class="line"><span class="comment"># =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Note.where(<span class="symbol">id:</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</span><br><span class="line"><span class="comment"># =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
 <p><strong>但如果你希望以一种特定的排序方式返回呢？</strong>比如你先从搜索引擎获得一组ID，那么你如何确保返回的数据跟之前拿到的ID顺序一致呢？</p>
 <p>你可以尝试用 <code>where</code> 条件去查询:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Note.where(<span class="symbol">id:</span> [<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</div><div class="line"><span class="comment"># =&gt; [1, 2, 3]</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Note.where(<span class="symbol">id:</span> [<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</span><br><span class="line"><span class="comment"># =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
 <p>但它并没有按照我们预期的想法去工作。那么你是如何保证你的数据以正确的顺序返回呢？</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -825,154 +985,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-link " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2015/02/08/format-rails-date-to-match-javascript-date/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xuncheng Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a class="post-title-link post-title-link-external" target="_blank" href="https://gist.github.com/xuncheng/4825c141d03d5d2659b9" itemprop="url">
-                Format Rails Date to Match Javascript Date
-                <i class="fa fa-external-link"></i>
-              </a>
-            </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-02-09T00:00:00+08:00">
-                2015-02-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/02/08/format-rails-date-to-match-javascript-date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2015/02/08/format-rails-date-to-match-javascript-date/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
         
       
     </div>
@@ -1041,9 +1053,7 @@
 
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/xuncheng.jpg"
-               alt="Xuncheng Wang" />
+          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
           <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
            
               <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
@@ -1054,7 +1064,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1135,10 +1145,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy;  2013 - 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
