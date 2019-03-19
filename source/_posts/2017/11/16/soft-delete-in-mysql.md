@@ -17,6 +17,8 @@ SELECT slug FROM products
 
 其中，`id` 是 PRIMARY KEY，`deleted_at` 记录删除时间，用于实现 Soft Delete，也加了索引。`deleted_at` 允许为空，为空代表是正常商品，不为空代表“已删除”的商品，同时记录下删除时间。
 
+<!-- more -->
+
 并且在 Rails 的 ActiveRecord 中设置了 `default_scope -> { where(deleted_at: nil) }`。
 
 这条 SQL 语句当然期待一直使用 `PRIMARY` index 实现查询效率最高，但是，结果却出人意料的成了 slow query。
