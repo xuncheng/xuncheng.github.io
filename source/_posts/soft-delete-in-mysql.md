@@ -3,7 +3,7 @@ title: 小心 MySQL Soft Delete
 categories: Tech
 tags:
   - MySQL
-date: 2017-11-16
+date: 2017-11-15
 ---
 
 这是一篇关于一个 MySQL query optimizer 问题的定位及解决。
@@ -41,5 +41,4 @@ EXPLAIN output 中 Extra 列给出了 `Using index condition`，也就是 MySQL 
 - 回头看看使用 `deleted_at` index 这种方式呢，完全只需要使用 index 数据就可以完成；可以很好地利用 ICP 优化，简直完美。
 
 等了解到更多的 MySQL 查询优化后，再补充准确的原因吧。
-
 
