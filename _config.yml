@@ -34,7 +34,7 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -77,9 +77,9 @@ theme_config:
   scheme: Pisces
 
   menu:
-    home: / || home
-    about: /about/ || user
-    archives: /archives/ || archive
+    home: / ||
+    about: /about/ ||
+    archives: /archives/ ||
 
   avatar:
     # Replace the default image and set the url here.
@@ -99,35 +99,51 @@ theme_config:
     # Uri of fonts host, e.g. //fonts.googleapis.com (Default).
     host:
 
-    # Font options:
-    # `external: true` will load this font family from `host` above.
-    # `family: Times New Roman`. Without any quotes.
-    # `size: x.x`. Use `em` as unit. Default: 1 (16px)
-
-    # Global font settings used for all elements inside <body>.
     global:
       external: true
       family: Monda
-      size: 0.875
-
-    # Font settings for site title (.site-title).
-    title:
-      external: true
-      family:
       size:
 
-    # Font settings for headlines (<h1> to <h6>).
+    title:
+      external: true
+      family: Rosario
+      size:
+
     headings:
       external: true
       family: Roboto Slab
       size:
 
-    # Font settings for posts (.post-body).
     posts:
       external: true
       family:
+      size: 0.875
 
-    # Font settings for <code> and code blocks.
     codes:
       external: true
       family: SFMono-Regular
+
+  math:
+    per_page: true
+
+    mathjax:
+      enable: true
+      mhchem: true
+
+    katex:
+      enable: false
+      copy_tex: false
+
+  back2top:
+    enable: true
+    sidebar: false
+    scrollpercent: true
+
+  footer:
+    powered:
+      enable: true
+      version: false
+
+    theme:
+      enable: true
+      version: false
