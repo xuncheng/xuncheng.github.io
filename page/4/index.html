@@ -1,516 +1,389 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-      
-    
-
-    
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css">
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1">
-
-
-
-
-
-
-<meta name="description" content="A Web Developer&apos;s Diary.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xuncheng Wang">
-<meta property="og:url" content="https://xuncheng.github.io/page/4/index.html">
-<meta property="og:site_name" content="Xuncheng Wang">
-<meta property="og:description" content="A Web Developer&apos;s Diary.">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xuncheng Wang">
-<meta name="twitter:description" content="A Web Developer&apos;s Diary.">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":true},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
     algolia: {
-      applicationID: '',
+      appID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
   };
 </script>
 
+  <meta name="description" content="知易行难">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xuncheng Wang">
+<meta property="og:url" content="https://wxuncheng.com/page/4/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="知易行难">
+<meta property="og:locale" content="en">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xuncheng Wang">
+<meta name="twitter:description" content="知易行难">
+
+<link rel="canonical" href="https://wxuncheng.com/page/4/">
 
 
-  <link rel="canonical" href="https://xuncheng.github.io/page/4/">
-
-
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
   <title>Xuncheng Wang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Xuncheng Wang</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle">知易行难</p>
-      
+        <p class="site-subtitle">Quick notes</p>
   </div>
 
   <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-            Home
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-            About
-          </a>
-        </li>
-      
-        
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-            Archives
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
-  
+  </li>
+  </ul>
+
 </nav>
-
-
-
- </div>
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
 
+  <div class="posts-expand">
+        
   
-
   
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/07/07/basic-controller-specs/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/fabrication-object-generation-for-ruby/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+      <meta itemprop="description" content="知易行难">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Xuncheng Wang">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/07/07/basic-controller-specs/" itemprop="url">Basic Controller Specs</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/fabrication-object-generation-for-ruby/" class="post-title-link" itemprop="url">Fabrication: Object Generation for Ruby</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-08T00:00:00+08:00">
-                2013-07-08
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2013-07-09 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-09T00:00:00+08:00">2013-07-09</time>
+            </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Tech/" itemprop="url" rel="index">
                     <span itemprop="name">Tech</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/07/07/basic-controller-specs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/07/07/basic-controller-specs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
+          <h2 id="Fabrication"><a href="#Fabrication" class="headerlink" title="Fabrication"></a>Fabrication</h2><p>Fabrication is a simple and powerful object generation library.<br>Homepage: <a href="http://www.fabricationgem.org/" target="_blank" rel="noopener">http://www.fabricationgem.org/</a></p>
+<p>Add <code>fabrication</code> in the Gemfile</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group <span class="symbol">:development</span>, <span class="symbol">:test</span> <span class="keyword">do</span></span><br><span class="line">  gem <span class="string">"fabrication"</span>, <span class="string">"~&gt; 2.7.12"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>Fabricators defind in the right place are automatically loaded, for example: </p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spec/fabricators/video_fabricator.rb</span><br></pre></td></tr></table></figure>
+<h2 id="Faker"><a href="#Faker" class="headerlink" title="Faker"></a>Faker</h2><p>A library for generating fake data such as names, addresses, and phone numbers.<br>Homepage: <a href="https://github.com/stympy/faker" target="_blank" rel="noopener">https://github.com/stympy/faker</a></p>
+<p>Add <code>faker</code> in the Gemfile</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group <span class="symbol">:test</span> <span class="keyword">do</span></span><br><span class="line">  gem <span class="string">"faker"</span>, <span class="string">"~&gt; 1.1.2"</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><strong>Usage</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Faker::Name.name      <span class="comment">#=&gt; "Christophe Bartell"</span></span><br><span class="line">Faker::Internet.email <span class="comment">#=&gt; "kirsten.greenholt<span class="doctag">@corkeryfisher</span>.info"</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/fabrication-object-generation-for-ruby/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/basic-controller-specs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/basic-controller-specs/" class="post-title-link" itemprop="url">Basic Controller Specs</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-07-08 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-08T00:00:00+08:00">2013-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-          
-            <a id="more"></a>
+          <a id="more"></a>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'spec_helper'</span></span><br><span class="line"></span><br><span class="line">describe TodosController <span class="keyword">do</span></span><br><span class="line">  describe <span class="string">"GET index"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"populates an array of todos"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:index</span></span><br><span class="line">      expect(assigns(<span class="symbol">:todos</span>)).to match_array([cook])</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :index template"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:index</span></span><br><span class="line">      expect(response).to render_template <span class="symbol">:index</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET show"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns the requested todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:show</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq(cook)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :show template"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:show</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to render_template <span class="symbol">:show</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET new"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns a new Todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:new</span></span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to be_a_new(Todo)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :new template"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:new</span></span><br><span class="line">      expect(response).to render_template <span class="symbol">:new</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"POST create"</span> <span class="keyword">do</span></span><br><span class="line">    context <span class="string">"with valid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"saves the new todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        expect&#123;</span><br><span class="line">          post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        &#125;.to change(Todo, <span class="symbol">:count</span>).by(<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"redirects to the root path"</span> <span class="keyword">do</span></span><br><span class="line">        post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        expect(response).to redirect_to root_path</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with invalid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"does not save the new todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        expect&#123;</span><br><span class="line">          post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        &#125;.to_not change(Todo, <span class="symbol">:count</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"re-renders the :new template"</span> <span class="keyword">do</span></span><br><span class="line">        post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        expect(response).to render_template <span class="symbol">:new</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET edit"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns the requested todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:edit</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq cook</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :edit template"</span> to</span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:edit</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to render_template <span class="symbol">:edit</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"PUT update"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"locates the requested @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq(cook)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with valid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"updates the todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">        cook.reload</span><br><span class="line">        expect(cook.name).to eq(<span class="string">"cooking"</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"redirects to the todo"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">        expect(response).to redirect_to cook</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with invalid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"does not update the todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="literal">nil</span>, <span class="symbol">description:</span> <span class="string">"none update"</span>&#125;</span><br><span class="line">        cook.reload</span><br><span class="line">        expect(cook.description).to_not eq(<span class="string">"none update"</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"re-renders the :edit template"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="literal">nil</span>, <span class="symbol">description:</span> <span class="string">"none update"</span>&#125;</span><br><span class="line">        expect(response).to render_template <span class="symbol">:edit</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"DELETE destroy"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"deletes the todo from the database"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      expect&#123;</span><br><span class="line">        delete <span class="symbol">:destroy</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      &#125;.to change(Todo, <span class="symbol">:count</span>).by(-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"redirects to the root path"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      delete <span class="symbol">:destroy</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to redirect_to root_path</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
-          
-        
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
 
     
-      
-
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
   
 
+        
   
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/06/30/testing-rspec-and-shoulda-matchers/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/testing-rspec-and-shoulda-matchers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+      <meta itemprop="description" content="知易行难">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Xuncheng Wang">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/06/30/testing-rspec-and-shoulda-matchers/" itemprop="url">Testing: RSpec and Shoulda-Matchers</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/testing-rspec-and-shoulda-matchers/" class="post-title-link" itemprop="url">Testing: RSpec and Shoulda-Matchers</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-07-01T00:00:00+08:00">
-                2013-07-01
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2013-07-01 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-01T00:00:00+08:00">2013-07-01</time>
+            </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Tech/" itemprop="url" rel="index">
                     <span itemprop="name">Tech</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/06/30/testing-rspec-and-shoulda-matchers/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/06/30/testing-rspec-and-shoulda-matchers/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <h2 id="Rspec"><a href="#Rspec" class="headerlink" title="Rspec"></a>Rspec</h2><p>Homepage: <a href="https://github.com/rspec/rspec-rails" target="_blank" rel="noopener">https://github.com/rspec/rspec-rails</a></p>
 <p>Add <code>rspec-rails</code> to <strong>both</strong> the <code>:development</code> and <code>:test</code> groups in the <code>Gemfile</code></p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">group <span class="symbol">:development</span>, <span class="symbol">:test</span> <span class="keyword">do</span></span><br><span class="line">  gem <span class="string">'rspec-rails'</span>, <span class="string">'~&gt; 2.0'</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -523,152 +396,80 @@
 <p>before run <code>rspec</code>, you SHOULD prepare test database:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ rake db:migrate db:<span class="built_in">test</span>:prepare</span><br><span class="line">$ rspec <span class="comment"># Make sure prepare test database before run rspec!!!</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/06/30/testing-rspec-and-shoulda-matchers/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+            <div class="post-button">
+              <a class="btn" href="/testing-rspec-and-shoulda-matchers/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
-      
-
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
   
 
+        
   
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/06/29/haml-and-github-flow/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/haml-and-github-flow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+      <meta itemprop="description" content="知易行难">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Xuncheng Wang">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/06/29/haml-and-github-flow/" itemprop="url">Haml and Github Flow</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/haml-and-github-flow/" class="post-title-link" itemprop="url">Haml and Github Flow</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-06-30T00:00:00+08:00">
-                2013-06-30
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2013-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2013-06-30T00:00:00+08:00">2013-06-30</time>
+            </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Tech/" itemprop="url" rel="index">
                     <span itemprop="name">Tech</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/06/29/haml-and-github-flow/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/06/29/haml-and-github-flow/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p><strong>Haml</strong> <a href="http://haml.info/" target="_blank" rel="noopener">http://haml.info</a></p>
 <p><strong>Haml to Html</strong> <a href="http://www.htmltohaml.com/" target="_blank" rel="noopener">http://www.htmltohaml.com/</a></p>
 <h3 id="GitHub-Flow-http-scottchacon-com-2011-08-31-github-flow-html"><a href="#GitHub-Flow-http-scottchacon-com-2011-08-31-github-flow-html" class="headerlink" title="GitHub Flow http://scottchacon.com/2011/08/31/github-flow.html"></a>GitHub Flow <a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="noopener">http://scottchacon.com/2011/08/31/github-flow.html</a></h3><ul>
@@ -680,351 +481,111 @@
 <li>Once it is merged and pushed to ‘master’, you can and <em>should</em> deploy immediately</li>
 </ul>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/06/29/haml-and-github-flow/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+            <div class="post-button">
+              <a class="btn" href="/haml-and-github-flow/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
     
-      
-
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
   
 
+        
   
   
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/06/22/polymorphic-associations/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/polymorphic-associations/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
       <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
+      <meta itemprop="description" content="知易行难">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Xuncheng Wang">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/06/22/polymorphic-associations/" itemprop="url">Polymorphic Associations in Rails</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/polymorphic-associations/" class="post-title-link" itemprop="url">Polymorphic Associations in Rails</a>
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-06-23T00:00:00+08:00">
-                2013-06-23
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
+              <time title="Created: 2013-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2013-06-23T00:00:00+08:00">2013-06-23</time>
+            </span>
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
+              <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Tech/" itemprop="url" rel="index">
                     <span itemprop="name">Tech</span>
                   </a>
                 </span>
-
-                
-                
-              
             </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/06/22/polymorphic-associations/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/06/22/polymorphic-associations/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
 
           
 
         </div>
       </header>
-    
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
           <p>With polymorphic associations, one class can belong_to more than one type of another class. In other words, this is not polymorphism in the typical object-oriented sense of the word; rather, it is something unique to Rails.</p>
 <h2 id="In-the-Case-of-Models-with-Comments"><a href="#In-the-Case-of-Models-with-Comments" class="headerlink" title="In the Case of Models with Comments"></a>In the Case of Models with Comments</h2><p>For example, you might have a <code>Comment</code> model that belongs to either <code>Timesheet</code> model or <code>BillableWeek</code> model.</p>
 <p>Here is a migration that will create the <code>comments</code> table:</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateComments</span> &lt; ActiveRecord::Migration</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></span><br><span class="line">    create_table <span class="symbol">:comments</span> <span class="keyword">do</span> <span class="params">|t|</span></span><br><span class="line">      t.text <span class="symbol">:content</span></span><br><span class="line">      t.references <span class="symbol">:commentabel</span>, <span class="symbol">polymorphic:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># t.integer :commentable_id</span></span><br><span class="line">      <span class="comment"># t.string :commentable_type</span></span><br><span class="line">      t.timestamps</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/06/22/polymorphic-associations/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+            <div class="post-button">
+              <a class="btn" href="/polymorphic-associations/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           <!--/noindex-->
         
       
     </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
+    
+    
+    
+      <footer class="post-footer">
         <div class="post-eof"></div>
-      
-    </footer>
+      </footer>
   </article>
-
-
-    
-      
-
-  
-
   
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://xuncheng.github.io/2013/06/19/authentication-from-scratch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/uploads/xuncheng.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xuncheng Wang">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2013/06/19/authentication-from-scratch/" itemprop="url">Authentication from Scratch</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2013-06-20T00:00:00+08:00">
-                2013-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2013/06/19/authentication-from-scratch/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2013/06/19/authentication-from-scratch/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Simple password authentication is easy to do with <code>has_secure_password</code>. Here you will learn how to make a complete Sign Up, Log In, and Log Out process as well as restrict access to certain actions.</p>
-<h2 id="1-User-model"><a href="#1-User-model" class="headerlink" title="1. User model"></a>1. User model</h2><h3 id="1-1-database-migrations"><a href="#1-1-database-migrations" class="headerlink" title="1.1 database migrations"></a>1.1 database migrations</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rails g migration create_users</span><br></pre></td></tr></table></figure>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsers</span> &lt; ActiveRecord::Migration</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">up</span></span></span><br><span class="line">    create_table <span class="symbol">:users</span> <span class="keyword">do</span> <span class="params">|t|</span></span><br><span class="line">      t.string <span class="symbol">:name</span></span><br><span class="line">      t.string <span class="symbol">:email</span></span><br><span class="line">      t.string <span class="symbol">:password</span></span><br><span class="line">      t.string <span class="symbol">:remember_token</span></span><br><span class="line">      t.timestamps</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">down</span></span></span><br><span class="line">    drop_table <span class="symbol">:users</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-2-the-model-file"><a href="#1-2-the-model-file" class="headerlink" title="1.2 the model file"></a>1.2 the model file</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> &lt; ActiveRecord::Base</span></span><br><span class="line">  attr_accessible <span class="symbol">:name</span>, <span class="symbol">:email</span>, <span class="symbol">:password</span>, <span class="symbol">:password_confirmation</span>, <span class="symbol">:remember_token</span></span><br><span class="line">  has_secure_password</span><br><span class="line"></span><br><span class="line">  before_save &#123; <span class="symbol">email:</span> downcase! &#125;</span><br><span class="line">  before_save <span class="symbol">:create_remember_token</span></span><br><span class="line"></span><br><span class="line">  VALID_EMAIL_REGEX = <span class="regexp">/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i</span></span><br><span class="line">  validates <span class="symbol">:email</span>, <span class="symbol">presence:</span> ture, <span class="symbol">format:</span> &#123; <span class="symbol">with:</span> VALID_EMAIL_REGEX &#125;,</span><br><span class="line">                    <span class="symbol">uniqueness:</span> &#123;<span class="symbol">case_sensitive:</span> <span class="literal">false</span>&#125;</span><br><span class="line">  validates <span class="symbol">:name</span>, <span class="symbol">presence:</span> <span class="literal">true</span></span><br><span class="line">  validates <span class="symbol">:password</span>, <span class="symbol">presence:</span> <span class="literal">true</span>, <span class="symbol">length:</span> &#123; <span class="symbol">minimum:</span> <span class="number">6</span> &#125;</span><br><span class="line">  validates <span class="symbol">:password_confirmation</span>, <span class="symbol">presence:</span> <span class="literal">true</span></span><br><span class="line">  after_validates &#123; <span class="keyword">self</span>.errors.messages.delete(<span class="symbol">:password_digest</span>) &#125;</span><br><span class="line"></span><br><span class="line">  private</span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create_remember_token</span></span></span><br><span class="line">    <span class="keyword">self</span>.remember_token = SecureRandom.urlsafe_base64</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2013/06/19/authentication-from-scratch/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
+  </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1032,175 +593,122 @@
           </div>
           
 
-
-          
-
         </div>
-        
           
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
   </div>
 
-  <aside id="sidebar" class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image" src="/uploads/xuncheng.jpg" alt="Xuncheng Wang">
-          <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
-           
-              <p class="site-description motion-element" itemprop="description">A Web Developer's Diary.</p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">20</span>
-                <span class="site-state-item-name">posts</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">categories</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">30</span>
-                <span class="site-state-item-name">tags</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
+  <img class="site-author-image" itemprop="image" alt="Xuncheng Wang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+  <div class="site-description" itemprop="description">知易行难</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
         
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/xuncheng" target="_blank" title="GitHub">
-                  
-                    <i class="fa fa-fw fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="https://twitter.com/wxuncheng" target="_blank" title="Twitter">
-                  
-                    <i class="fa fa-fw fa-twitter"></i>
-                  
-                  Twitter
-                </a>
-              </span>
-            
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuncheng" title="GitHub &rarr; https://github.com/xuncheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
 
 
-      </section>
 
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">
+        
+
+<div class="copyright">
   
-  &copy;  2013 - 
+  &copy; 2013 – 
   <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
 </div>
-
-
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
-
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a>
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
 
         
+
+
+
+
+
+
+
+
+
+
+
 
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-          <span id="scrollpercent"><span>0</span>%</span>
-        
-      </div>
-    
-
   </div>
 
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
 
 
 
@@ -1217,99 +725,9 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
-
-
-
-  
-
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://xuncheng.disqus.com/count.js" async></script>
-    
-
-    
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
 
   
 

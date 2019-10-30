@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="这是一篇关于一个 MySQL query optimizer 问题的定位及解决。 公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为： 123SELECT slug FROM products  WHERE id IN (id1, id2, ...)  AND deleted_at IS NULL; 其中，id 是 PRIMARY KEY，deleted_at 记录删除时间，用">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小心 MySQL Soft Delete">
+<meta property="og:url" content="https://wxuncheng.com/soft-delete-in-mysql/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="这是一篇关于一个 MySQL query optimizer 问题的定位及解决。 公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为： 123SELECT slug FROM products  WHERE id IN (id1, id2, ...)  AND deleted_at IS NULL; 其中，id 是 PRIMARY KEY，deleted_at 记录删除时间，用">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-30T17:07:33.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小心 MySQL Soft Delete">
+<meta name="twitter:description" content="这是一篇关于一个 MySQL query optimizer 问题的定位及解决。 公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为： 123SELECT slug FROM products  WHERE id IN (id1, id2, ...)  AND deleted_at IS NULL; 其中，id 是 PRIMARY KEY，deleted_at 记录删除时间，用">
+
+<link rel="canonical" href="https://wxuncheng.com/soft-delete-in-mysql/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>小心 MySQL Soft Delete | Xuncheng Wang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuncheng Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Quick notes</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/soft-delete-in-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          小心 MySQL Soft Delete
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-15T00:00:00+08:00">2017-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这是一篇关于一个 MySQL query optimizer 问题的定位及解决。</p>
+<p>公司系统中一个简单的 SQL 查询却花费了近 3 秒的时间，语句大致为：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> slug <span class="keyword">FROM</span> products</span><br><span class="line">  <span class="keyword">WHERE</span> <span class="keyword">id</span> <span class="keyword">IN</span> (id1, id2, ...)</span><br><span class="line">  <span class="keyword">AND</span> deleted_at <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>其中，<code>id</code> 是 PRIMARY KEY，<code>deleted_at</code> 记录删除时间，用于实现 Soft Delete，也加了索引。<code>deleted_at</code> 允许为空，为空代表是正常商品，不为空代表“已删除”的商品，同时记录下删除时间。</p>
+<a id="more"></a>
+<p>并且在 Rails 的 ActiveRecord 中设置了 <code>default_scope -&gt; { where(deleted_at: nil) }</code>。</p>
+<p>这条 SQL 语句当然期待一直使用 <code>PRIMARY</code> index 实现查询效率最高，但是，结果却出人意料的成了 slow query。</p>
+<p>使用 MySQL EXPLAIN 来查看查询的执行流程。结果如下：</p>
+<p>发现当给定的 ID 数量个数为 20 左右时，是正常的使用 PRIMARY index；但是，当给定的 ID 数量个数为 50 左右时，竟然使用了 <code>deleted_at</code> 为空的有几千万行！</p>
+<p>EXPLAIN output 中 Extra 列给出了 <code>Using index condition</code>，也就是 MySQL 只使用了 <code>deleted_at</code> index 的数据，而不用读取任何表数据；这是 MySQL 的 ICP 优化。这个过程相当于：</p>
+<ul>
+<li>读取 <code>deleted_at</code> 索引信息到内存；</li>
+<li>找出 <code>deleted_at</code> 为空的行的 ID （几千万行）；</li>
+<li>在上面几千万行中找出 ID 在给定的 ID 列表中的行；</li>
+</ul>
+<p>显然，这样效率是极其低下的，出现这种令人意外的行为，我猜测是由于 MySQL 最终获取数据不只一种方式，这就需要评估多种方式执行的复杂度。当指定 ID 比较少时，使用 <code>PRIMARY</code> index 这种方式的复杂度相较使用 <code>deleted_at</code> index 小；当指定 ID 比较多时，在 MySQL 评估算法中，前一种方式的复杂度竟然诡异地大于后一种方式。而真正执行语句的情况并非如此，让我们先猜测一下该评估算法的一些行为。</p>
+<ul>
+<li>当指定的 ID 比较多，而且比较离散时，MySQL 认为需要读取更多的 BTree nodes；从 PRIMARY index 中获取到的 ID 后，还要离散的读取表数据，从而过滤 <code>deleted_at</code> 为空的行；</li>
+<li>回头看看使用 <code>deleted_at</code> index 这种方式呢，完全只需要使用 index 数据就可以完成；可以很好地利用 ICP 优化，简直完美。</li>
+</ul>
+<p>等了解到更多的 MySQL 查询优化后，再补充准确的原因吧。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Xuncheng Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://wxuncheng.com/soft-delete-in-mysql/" title="小心 MySQL Soft Delete">https://wxuncheng.com/soft-delete-in-mysql/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/dealing-with-503-errors-when-testing-elasticsearch-integration-in-rails/" rel="next" title="Dealing with 503 errors when testing Elasticsearch integration in Rails">
+                  <i class="fa fa-chevron-left"></i> Dealing with 503 errors when testing Elasticsearch integration in Rails
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/metrics-to-evaluate-machine-learning/" rel="prev" title="机器学习 - 评估指标">
+                  机器学习 - 评估指标 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuncheng Wang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+  <div class="site-description" itemprop="description">知易行难</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuncheng" title="GitHub &rarr; https://github.com/xuncheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a>
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

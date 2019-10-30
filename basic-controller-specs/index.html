@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021">
+<meta name="keywords" content="Rails,RSpec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Basic Controller Specs">
+<meta property="og:url" content="https://wxuncheng.com/basic-controller-specs/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-30T17:07:33.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Basic Controller Specs">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011021">
+
+<link rel="canonical" href="https://wxuncheng.com/basic-controller-specs/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Basic Controller Specs | Xuncheng Wang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuncheng Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Quick notes</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/basic-controller-specs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Basic Controller Specs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-07-08 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-08T00:00:00+08:00">2013-07-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <a id="more"></a>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">require</span> <span class="string">'spec_helper'</span></span><br><span class="line"></span><br><span class="line">describe TodosController <span class="keyword">do</span></span><br><span class="line">  describe <span class="string">"GET index"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"populates an array of todos"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:index</span></span><br><span class="line">      expect(assigns(<span class="symbol">:todos</span>)).to match_array([cook])</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :index template"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:index</span></span><br><span class="line">      expect(response).to render_template <span class="symbol">:index</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET show"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns the requested todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:show</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq(cook)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :show template"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:show</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to render_template <span class="symbol">:show</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET new"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns a new Todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:new</span></span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to be_a_new(Todo)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :new template"</span> <span class="keyword">do</span></span><br><span class="line">      get <span class="symbol">:new</span></span><br><span class="line">      expect(response).to render_template <span class="symbol">:new</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"POST create"</span> <span class="keyword">do</span></span><br><span class="line">    context <span class="string">"with valid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"saves the new todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        expect&#123;</span><br><span class="line">          post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        &#125;.to change(Todo, <span class="symbol">:count</span>).by(<span class="number">1</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"redirects to the root path"</span> <span class="keyword">do</span></span><br><span class="line">        post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        expect(response).to redirect_to root_path</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with invalid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"does not save the new todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        expect&#123;</span><br><span class="line">          post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        &#125;.to_not change(Todo, <span class="symbol">:count</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"re-renders the :new template"</span> <span class="keyword">do</span></span><br><span class="line">        post <span class="symbol">:create</span>, <span class="symbol">todo:</span> &#123;<span class="symbol">description:</span> <span class="string">"I like cooking."</span>&#125;</span><br><span class="line">        expect(response).to render_template <span class="symbol">:new</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"GET edit"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"assigns the requested todo to @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:edit</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq cook</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"renders the :edit template"</span> to</span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      get <span class="symbol">:edit</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to render_template <span class="symbol">:edit</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"PUT update"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"locates the requested @todo"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">      expect(assigns(<span class="symbol">:todo</span>)).to eq(cook)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with valid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"updates the todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">        cook.reload</span><br><span class="line">        expect(cook.name).to eq(<span class="string">"cooking"</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"redirects to the todo"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="string">"cooking"</span>&#125;</span><br><span class="line">        expect(response).to redirect_to cook</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    context <span class="string">"with invalid attributes"</span> <span class="keyword">do</span></span><br><span class="line">      it <span class="string">"does not update the todo in the database"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="literal">nil</span>, <span class="symbol">description:</span> <span class="string">"none update"</span>&#125;</span><br><span class="line">        cook.reload</span><br><span class="line">        expect(cook.description).to_not eq(<span class="string">"none update"</span>)</span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">      it <span class="string">"re-renders the :edit template"</span> <span class="keyword">do</span></span><br><span class="line">        cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>, <span class="symbol">description:</span> <span class="string">"I like cooking."</span>)</span><br><span class="line">        put <span class="symbol">:update</span>, <span class="symbol">id:</span> cook, <span class="symbol">todo:</span> &#123;<span class="symbol">name:</span> <span class="literal">nil</span>, <span class="symbol">description:</span> <span class="string">"none update"</span>&#125;</span><br><span class="line">        expect(response).to render_template <span class="symbol">:edit</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">  describe <span class="string">"DELETE destroy"</span> <span class="keyword">do</span></span><br><span class="line">    it <span class="string">"deletes the todo from the database"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      expect&#123;</span><br><span class="line">        delete <span class="symbol">:destroy</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      &#125;.to change(Todo, <span class="symbol">:count</span>).by(-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    it <span class="string">"redirects to the root path"</span> <span class="keyword">do</span></span><br><span class="line">      cook = Todo.create(<span class="symbol">name:</span> <span class="string">"cook"</span>)</span><br><span class="line">      delete <span class="symbol">:destroy</span>, <span class="symbol">id:</span> cook</span><br><span class="line">      expect(response).to redirect_to root_path</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Xuncheng Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://wxuncheng.com/basic-controller-specs/" title="Basic Controller Specs">https://wxuncheng.com/basic-controller-specs/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rails/" rel="tag"># Rails</a>
+              <a href="/tags/RSpec/" rel="tag"># RSpec</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/testing-rspec-and-shoulda-matchers/" rel="next" title="Testing: RSpec and Shoulda-Matchers">
+                  <i class="fa fa-chevron-left"></i> Testing: RSpec and Shoulda-Matchers
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/fabrication-object-generation-for-ruby/" rel="prev" title="Fabrication: Object Generation for Ruby">
+                  Fabrication: Object Generation for Ruby <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuncheng Wang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+  <div class="site-description" itemprop="description">知易行难</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuncheng" title="GitHub &rarr; https://github.com/xuncheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a>
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

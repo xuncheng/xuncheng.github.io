@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|SFMono-Regular:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.2',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="在 Rails 里，你可以很方便的通过一组 ID 从数据库中获取数据: 12Note.where(id: [1, 2, 3]).map(&amp;amp;:id)# =&amp;gt; [1, 2, 3] 但如果你希望以一种特定的排序方式返回呢？比如你先从搜索引擎获得一组ID，那么你如何确保返回的数据跟之前拿到的ID顺序一致呢？ 你可以尝试用 where 条件去查询: 12Note.where(id: [2, 1">
+<meta name="keywords" content="Rails,MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以任意顺序查询 MySQL 数据库记录">
+<meta property="og:url" content="https://wxuncheng.com/select-database-records-in-an-arbitrary-order/index.html">
+<meta property="og:site_name" content="Xuncheng Wang">
+<meta property="og:description" content="在 Rails 里，你可以很方便的通过一组 ID 从数据库中获取数据: 12Note.where(id: [1, 2, 3]).map(&amp;amp;:id)# =&amp;gt; [1, 2, 3] 但如果你希望以一种特定的排序方式返回呢？比如你先从搜索引擎获得一组ID，那么你如何确保返回的数据跟之前拿到的ID顺序一致呢？ 你可以尝试用 where 条件去查询: 12Note.where(id: [2, 1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-30T17:07:33.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以任意顺序查询 MySQL 数据库记录">
+<meta name="twitter:description" content="在 Rails 里，你可以很方便的通过一组 ID 从数据库中获取数据: 12Note.where(id: [1, 2, 3]).map(&amp;amp;:id)# =&amp;gt; [1, 2, 3] 但如果你希望以一种特定的排序方式返回呢？比如你先从搜索引擎获得一组ID，那么你如何确保返回的数据跟之前拿到的ID顺序一致呢？ 你可以尝试用 where 条件去查询: 12Note.where(id: [2, 1">
+
+<link rel="canonical" href="https://wxuncheng.com/select-database-records-in-an-arbitrary-order/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>以任意顺序查询 MySQL 数据库记录 | Xuncheng Wang</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Xuncheng Wang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Quick notes</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/select-database-records-in-an-arbitrary-order/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          以任意顺序查询 MySQL 数据库记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2015-05-29 00:00:00" itemprop="dateCreated datePublished" datetime="2015-05-29T00:00:00+08:00">2015-05-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在 Rails 里，你可以很方便的通过一组 ID 从数据库中获取数据:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Note.where(<span class="symbol">id:</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</span><br><span class="line"><span class="comment"># =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<p><strong>但如果你希望以一种特定的排序方式返回呢？</strong>比如你先从搜索引擎获得一组ID，那么你如何确保返回的数据跟之前拿到的ID顺序一致呢？</p>
+<p>你可以尝试用 <code>where</code> 条件去查询:</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Note.where(<span class="symbol">id:</span> [<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>]).map(&amp;<span class="symbol">:id</span>)</span><br><span class="line"><span class="comment"># =&gt; [1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<p>但它并没有按照我们预期的想法去工作。那么你是如何保证你的数据以正确的顺序返回呢？</p>
+<a id="more"></a>
+<h3 id="使用-MySQL-数据库提供的-FIELD-函数"><a href="#使用-MySQL-数据库提供的-FIELD-函数" class="headerlink" title="使用 MySQL 数据库提供的 FIELD 函数"></a>使用 MySQL 数据库提供的 FIELD 函数</h3><p>MySQL 提供了一种 <code>ORDER BY FILED</code> 的排序语法:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="string">`notes`</span> <span class="keyword">WHERE</span> <span class="string">`notes`</span>.<span class="string">`id`</span> <span class="keyword">IN</span> (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>) <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">FIELD</span>(<span class="keyword">id</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>为了方便在项目中使用，可以将它封装一下:</p>
+<ol>
+<li>添加 <code>lib/extensions/active_record/find_by_ordered_fields.rb</code></li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lib/extensions/active_record/find_by_ordered_fields.rb</span></span><br><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Extensions::ActiveRecord::FindByOrderedFields</span></span></span><br><span class="line">  extend ActiveSupport::Concern</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">module</span> <span class="title">ClassMethods</span></span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find_by_ordered</span><span class="params">(field, values)</span></span></span><br><span class="line">      sanitized_field_string = values.present? ? values.map &#123;<span class="params">|v|</span> connection.quote(v)&#125;.join(<span class="string">","</span>) : <span class="string">"''"</span></span><br><span class="line">      where(field =&gt; values).order(<span class="string">"FIELD(<span class="subst">#&#123;field&#125;</span>, <span class="subst">#&#123;sanitized_field_string&#125;</span>)"</span>)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">ActiveRecord::Base.send(<span class="symbol">:include</span>, Extensions::ActiveRecord::FindByOrderedFields)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>在 <code>initializer</code> 里载入 <code>find_by_ordered_fields</code> 文件:</li>
+</ol>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># config/initializers/extensions.rb</span></span><br><span class="line"><span class="keyword">require</span> File.join(Rails.root, <span class="string">'lib'</span>, <span class="string">'extensions'</span>, <span class="string">'active_record'</span>, <span class="string">'find_by_ordered_fields'</span>)</span><br></pre></td></tr></table></figure>
+<p>现在你可以直接用 <code>find_by_ordered</code> 方法来返回任意顺序的记录了。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># in rails console</span></span><br><span class="line">Note.find_by_ordered(<span class="symbol">:id</span>, [<span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h2><ol>
+<li><a href="http://www.justinweiss.com/blog/2015/04/20/how-to-select-database-records-in-an-arbitrary-order/" target="_blank" rel="noopener">How to Select Database Records in an Arbitrary Order</a></li>
+<li><a href="https://gist.github.com/xuncheng/5328c1548a6515f09a1a" target="_blank" rel="noopener">https://gist.github.com/xuncheng/5328c1548a6515f09a1a</a></li>
+<li><a href="https://github.com/panorama-ed/order_as_specified" target="_blank" rel="noopener">https://github.com/panorama-ed/order_as_specified</a></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Xuncheng Wang
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://wxuncheng.com/select-database-records-in-an-arbitrary-order/" title="以任意顺序查询 MySQL 数据库记录">https://wxuncheng.com/select-database-records-in-an-arbitrary-order/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rails/" rel="tag"># Rails</a>
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/format-rails-date-to-match-javascript-date/" rel="next" title="Format Rails Date to Match Javascript Date">
+                  <i class="fa fa-chevron-left"></i> Format Rails Date to Match Javascript Date
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/generate-uuid-in-javascript/" rel="prev" title="Generate a UUID in Javascript">
+                  Generate a UUID in Javascript <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-MySQL-数据库提供的-FIELD-函数"><span class="nav-number">1.</span> <span class="nav-text">使用 MySQL 数据库提供的 FIELD 函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Footnotes"><span class="nav-number"></span> <span class="nav-text">Footnotes</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="Xuncheng Wang"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Xuncheng Wang</p>
+  <div class="site-description" itemprop="description">知易行难</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/xuncheng" title="GitHub &rarr; https://github.com/xuncheng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2013 – 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xuncheng Wang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a>
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
