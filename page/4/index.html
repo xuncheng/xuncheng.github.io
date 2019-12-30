@@ -180,6 +180,89 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/twitter-bootstrap-with-rails/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/twitter-bootstrap-with-rails/" class="post-title-link" itemprop="url">Twitter Bootstrap with Rails</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-07-14 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-14T00:00:00+08:00">2013-07-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-Install-the-Bootstrap-Sass-Gem"><a href="#1-Install-the-Bootstrap-Sass-Gem" class="headerlink" title="1. Install the Bootstrap-Sass Gem"></a>1. Install the Bootstrap-Sass Gem</h3><p>Sass is a default for CSS development in Rails so I recommend installing Thomas McDonald’s <a href="https://github.com/thomas-mcdonald/bootstrap-sass" target="_blank" rel="noopener">bootstrap-sass</a> gem.</p>
+<p>add <code>bootstrap-sass</code> in the <strong>Gemfile</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="string">'bootstrap-sass'</span></span><br></pre></td></tr></table></figure>
+<p>and run <code>$ bundle install</code></p>
+<h3 id="2-Include-the-Twitter-Bootstrap-Javascript"><a href="#2-Include-the-Twitter-Bootstrap-Javascript" class="headerlink" title="2. Include the Twitter Bootstrap Javascript"></a>2. Include the Twitter Bootstrap Javascript</h3><p>Include the twitter bootstrap javascript files by modifying the file <strong>app/assets/javascripts/application.js</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//= require jquery</span></span><br><span class="line"><span class="comment">//= require jquery_ujs</span></span><br><span class="line"><span class="comment">//= require bootstrap</span></span><br><span class="line"><span class="comment">//= require_tree .</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-Import-the-Twitter-Bootstrap-CSS"><a href="#3-Import-the-Twitter-Bootstrap-CSS" class="headerlink" title="3. Import the Twitter Bootstrap CSS"></a>3. Import the Twitter Bootstrap CSS</h3><p>adding a new file <strong>app/assets/stylesheets/bootstrap_and_overrides.css.scss file</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"bootstrap"</span>;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/twitter-bootstrap-with-rails/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/fabrication-object-generation-for-ruby/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -502,85 +585,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/polymorphic-associations/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="知易行难">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xuncheng Wang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/polymorphic-associations/" class="post-title-link" itemprop="url">Polymorphic Associations in Rails</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2013-06-23 00:00:00" itemprop="dateCreated datePublished" datetime="2013-06-23T00:00:00+08:00">2013-06-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>With polymorphic associations, one class can belong_to more than one type of another class. In other words, this is not polymorphism in the typical object-oriented sense of the word; rather, it is something unique to Rails.</p>
-<h2 id="In-the-Case-of-Models-with-Comments"><a href="#In-the-Case-of-Models-with-Comments" class="headerlink" title="In the Case of Models with Comments"></a>In the Case of Models with Comments</h2><p>For example, you might have a <code>Comment</code> model that belongs to either <code>Timesheet</code> model or <code>BillableWeek</code> model.</p>
-<p>Here is a migration that will create the <code>comments</code> table:</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateComments</span> &lt; ActiveRecord::Migration</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">change</span></span></span><br><span class="line">    create_table <span class="symbol">:comments</span> <span class="keyword">do</span> <span class="params">|t|</span></span><br><span class="line">      t.text <span class="symbol">:content</span></span><br><span class="line">      t.references <span class="symbol">:commentabel</span>, <span class="symbol">polymorphic:</span> <span class="literal">true</span></span><br><span class="line">      <span class="comment"># t.integer :commentable_id</span></span><br><span class="line">      <span class="comment"># t.string :commentable_type</span></span><br><span class="line">      t.timestamps</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/polymorphic-associations/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -631,18 +635,18 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
