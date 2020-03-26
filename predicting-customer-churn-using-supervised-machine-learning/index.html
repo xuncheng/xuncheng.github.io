@@ -62,7 +62,8 @@
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/user-condition.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-up.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-down.png">
-<meta property="og:updated_time" content="2020-03-26T19:59:04.544Z">
+<meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/features.png">
+<meta property="og:updated_time" content="2020-03-26T20:17:52.651Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于监督式机器学习预测客户流失">
 <meta name="twitter:description" content="对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流失的预测">
@@ -332,11 +333,14 @@
 <p><img src="/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-down.png" alt></p>
 <p>最终我选取了 <code>gender</code>，<code>songsPlayed</code>，<code>artistsPlayed</code>，<code>thumbsUps</code>，<code>thumbsDowns</code> 等特征作为后续分析建模的一部分。</p>
 <h1 id="模型选择与结果"><a href="#模型选择与结果" class="headerlink" title="模型选择与结果"></a>模型选择与结果</h1><p>基于以上的分析，最终选取了 <code>churn</code>，<code>gender</code>，<code>songs</code>，<code>thumbs up</code>，<code>thumbs down</code> 和 <code>artist</code> 这些变量作为特征工程，其中 <code>churn</code> 作为标签。</p>
-<p> 预测用户流失率，本质上是二分类问题，因此，我选择了 <code>LogisticRegression</code>和 <code>RandomForestClassifier</code> 两种模型，其中 <code>LogisticRegression</code> 模型的效果最好，在测试集中 F1_score 达到了 0.767，因此，可以采用该模型进行预测流失用户。</p>
+<p>具体数据字典如下图所示：</p>
+<p><img src="/images/predicting-customer-churn-using-supervised-machine-learning/features.png" alt="特征工程"></p>
+<p>在预测流失用户的时候，我们希望能准确找到潜在流失的用户，因此召回率（recall）是衡量模型一个重要指标，同时，我们希望尽可能少的将留下的用户预测为流失用户，即减少第二类错误的概率，因此，准确率（accuracy）指标也要考虑，所以，在项目中 <code>F1_score</code> 成为我们模型评价指标的首选。</p>
+<p>预测用户流失率，本质上是二分类问题，因此，我选择了 <code>LogisticRegression</code>和 <code>RandomForestClassifier</code> 两种模型，其中 <code>LogisticRegression</code> 模型的效果最好，在测试集中 F1_score 达到了 0.767，因此，可以采用该模型进行预测流失用户。</p>
 <h1 id="总结与反思"><a href="#总结与反思" class="headerlink" title="总结与反思"></a>总结与反思</h1><p>预测流失用户，本质上是针对用户的二分类问题，因此适合采用监督学习的机器学习方法。项目主要流程包括：数据清洗，探索性分析，特征工程，监督学习建模，建模过程中采用F1分数对模型进行评估和改进。</p>
 <p>在这个问题上，由于特征较少，所以随机森林算法没有优势，逻辑回归算法表现更好。项目中，可以提取更多的特征，以及更多的参数来对模型进行改进。</p>
 <p>一开始计划之后修改原始数据来进行建模，思考后改成了用包含特征属性的新数据集来进行建模；最好不要破解原始数据，这样可以尝试多次提取不同的特征来进行建模。</p>
-<h1 id="源码和资料"><a href="#源码和资料" class="headerlink" title="源码和资料"></a>源码和资料</h1><ol>
+<h1 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h1><ol>
 <li><a href="https://github.com/xuncheng/DSND_Sparkify" target="_blank" rel="noopener">https://github.com/xuncheng/DSND_Sparkify</a></li>
 <li><a href="https://spark.apache.org/" target="_blank" rel="noopener">https://spark.apache.org/ </a></li>
 <li><a href="https://dataplatform.cloud.ibm.com/" target="_blank" rel="noopener">https://dataplatform.cloud.ibm.com/ </a></li>
@@ -421,7 +425,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义客户流失"><span class="nav-number">2.</span> <span class="nav-text">定义客户流失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据可视化"><span class="nav-number">3.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型选择与结果"><span class="nav-number">4.</span> <span class="nav-text">模型选择与结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结与反思"><span class="nav-number">5.</span> <span class="nav-text">总结与反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码和资料"><span class="nav-number">6.</span> <span class="nav-text">源码和资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义客户流失"><span class="nav-number">2.</span> <span class="nav-text">定义客户流失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据可视化"><span class="nav-number">3.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型选择与结果"><span class="nav-number">4.</span> <span class="nav-text">模型选择与结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结与反思"><span class="nav-number">5.</span> <span class="nav-text">总结与反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资料"><span class="nav-number">6.</span> <span class="nav-text">资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
