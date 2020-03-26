@@ -69,7 +69,13 @@ tags:
 
 基于以上的分析，最终选取了 `churn`，`gender`，`songs`，`thumbs up`，`thumbs down` 和 `artist` 这些变量作为特征工程，其中 `churn` 作为标签。
 
- 预测用户流失率，本质上是二分类问题，因此，我选择了 `LogisticRegression`和 `RandomForestClassifier` 两种模型，其中 `LogisticRegression` 模型的效果最好，在测试集中 F1\_score 达到了 0.767，因此，可以采用该模型进行预测流失用户。
+具体数据字典如下图所示：
+
+![特征工程][image-5]
+
+在预测流失用户的时候，我们希望能准确找到潜在流失的用户，因此召回率（recall）是衡量模型一个重要指标，同时，我们希望尽可能少的将留下的用户预测为流失用户，即减少第二类错误的概率，因此，准确率（accuracy）指标也要考虑，所以，在项目中 `F1_score` 成为我们模型评价指标的首选。
+
+预测用户流失率，本质上是二分类问题，因此，我选择了 `LogisticRegression`和 `RandomForestClassifier` 两种模型，其中 `LogisticRegression` 模型的效果最好，在测试集中 F1\_score 达到了 0.767，因此，可以采用该模型进行预测流失用户。
 
 # 总结与反思
 
@@ -79,7 +85,7 @@ tags:
 
 一开始计划之后修改原始数据来进行建模，思考后改成了用包含特征属性的新数据集来进行建模；最好不要破解原始数据，这样可以尝试多次提取不同的特征来进行建模。
 
-# 源码和资料
+# 资料
 1. [https://github.com/xuncheng/DSND\_Sparkify][1]
 2. [https://spark.apache.org/ ][2]
 3. [https://dataplatform.cloud.ibm.com/ ][3]
@@ -92,3 +98,4 @@ tags:
 [image-2]:	/images/predicting-customer-churn-using-supervised-machine-learning/user-condition.png
 [image-3]:	/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-up.png
 [image-4]:	/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-down.png
+[image-5]:	/images/predicting-customer-churn-using-supervised-machine-learning/features.png
