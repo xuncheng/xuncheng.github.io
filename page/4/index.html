@@ -180,6 +180,86 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/shared-examples-and-macros-helper-in-rspec/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Xuncheng Wang">
+      <meta itemprop="description" content="知易行难">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Xuncheng Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/shared-examples-and-macros-helper-in-rspec/" class="post-title-link" itemprop="url">Shared examples and Macros helper in RSpec</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2013-07-20 00:00:00" itemprop="dateCreated datePublished" datetime="2013-07-20T00:00:00+08:00">2013-07-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Shared-examples"><a href="#Shared-examples" class="headerlink" title="Shared examples"></a>Shared examples</h2><p>RSpec gives us a nice way to clean up this replication with <em>shared examples</em>. Setting up a shared example is pretty simple-first, create a block for the examples as follow.</p>
+<p>adding a new file <strong>app/spec/support/shared_examples.rb</strong></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shared_examples <span class="string">"require login"</span> <span class="keyword">do</span></span><br><span class="line">  it <span class="string">"redirects to the user sign in path"</span> <span class="keyword">do</span></span><br><span class="line">    action <span class="comment"># defined in the spec  	</span></span><br><span class="line">    expect(response).to redirect_to signin_path</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>and use it (in <strong>app/spec/controllers/queue_videos_controller_spec.rb</strong>)</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">describe <span class="string">"GET index"</span></span><br><span class="line">  context <span class="string">"with unauthenticated users"</span> <span class="keyword">do</span></span><br><span class="line">    it_behaves_like <span class="string">"require login"</span> <span class="keyword">do</span></span><br><span class="line">      let(<span class="symbol">:action</span>) &#123; get <span class="symbol">:index</span> &#125;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/shared-examples-and-macros-helper-in-rspec/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/twitter-bootstrap-with-rails/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -500,91 +580,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://wxuncheng.com/haml-and-github-flow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Xuncheng Wang">
-      <meta itemprop="description" content="知易行难">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Xuncheng Wang">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/haml-and-github-flow/" class="post-title-link" itemprop="url">Haml and Github Flow</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2013-06-30 00:00:00" itemprop="dateCreated datePublished" datetime="2013-06-30T00:00:00+08:00">2013-06-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tech/" itemprop="url" rel="index">
-                    <span itemprop="name">Tech</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>Haml</strong> <a href="http://haml.info/" target="_blank" rel="noopener">http://haml.info</a></p>
-<p><strong>Haml to Html</strong> <a href="http://www.htmltohaml.com/" target="_blank" rel="noopener">http://www.htmltohaml.com/</a></p>
-<h3 id="GitHub-Flow-http-scottchacon-com-2011-08-31-github-flow-html"><a href="#GitHub-Flow-http-scottchacon-com-2011-08-31-github-flow-html" class="headerlink" title="GitHub Flow http://scottchacon.com/2011/08/31/github-flow.html"></a>GitHub Flow <a href="http://scottchacon.com/2011/08/31/github-flow.html" target="_blank" rel="noopener">http://scottchacon.com/2011/08/31/github-flow.html</a></h3><ul>
-<li>Anything in the <code>master</code> branch is deployable</li>
-<li>To work on something new, create a descriptively named branch off of <code>master</code> (ie: <code>new-oauth2-scopes</code>)</li>
-<li>Commit to that branch locally and regularly push your work to the same named branch on the server</li>
-<li>When you need feedback or help, or you think the branch is ready for merging, open a <a href="http://help.github.com/send-pull-requests/" target="_blank" rel="noopener">pull request</a></li>
-<li>After someone else has reviewed and signed off on the feature, you can merge it into master</li>
-<li>Once it is merged and pushed to ‘master’, you can and <em>should</em> deploy immediately</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/haml-and-github-flow/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -635,7 +630,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -646,7 +641,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">35</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -676,7 +671,7 @@
 <div class="copyright">
   
   &copy; 2013 – 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
