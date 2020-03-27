@@ -50,24 +50,25 @@
   };
 </script>
 
-  <meta name="description" content="对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流失的预测">
-<meta name="keywords" content="Machine Learning,Spark">
+  <meta name="description" content="项目背景对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流">
+<meta name="keywords" content="Spark - Machine Learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于监督式机器学习预测客户流失">
 <meta property="og:url" content="https://wxuncheng.com/predicting-customer-churn-using-supervised-machine-learning/index.html">
 <meta property="og:site_name" content="Xuncheng Wang">
-<meta property="og:description" content="对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流失的预测">
+<meta property="og:description" content="项目背景对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/precisionrecall.svg">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/pages.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/user-condition.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-up.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/thumbs-down.png">
 <meta property="og:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/features.png">
-<meta property="og:updated_time" content="2020-03-26T20:17:52.651Z">
+<meta property="og:updated_time" content="2020-03-27T09:49:33.992Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于监督式机器学习预测客户流失">
-<meta name="twitter:description" content="对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流失的预测">
-<meta name="twitter:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/pages.png">
+<meta name="twitter:description" content="项目背景对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。 在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流">
+<meta name="twitter:image" content="https://wxuncheng.com/images/predicting-customer-churn-using-supervised-machine-learning/precisionrecall.svg">
 
 <link rel="canonical" href="https://wxuncheng.com/predicting-customer-churn-using-supervised-machine-learning/">
 
@@ -236,9 +237,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。</p>
+        <h1 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h1><p>对于很多公司而言，用户流失率是一个非常重要的数据，其中付费用户的流失率又更尤为得重要。因此，根据用户过去的行为，预测出可能的流失用户，在用户离开之前提供如优惠等一系列挽留措施，以此来最大限度减少付费用户的流失情况。</p>
 <p>在这篇文章中，我将根据 Udacity 提供的数据，在 IBM Waston Studio 云平台上运用 PySpark 来对一家叫 Sparkify 的音乐公司进行付费用户流失的预测。</p>
 <a id="more"></a>
+<h2 id="问题陈述"><a href="#问题陈述" class="headerlink" title="问题陈述"></a>问题陈述</h2><p>在项目中，我们将探索收集到的用户交互数据，并运用机器学习记录来找到一些线索，以预测将来哪些用户可能会流失，以便我们进行一些挽留措施来防止潜在的损失。</p>
+<ol>
+<li>使用 Spark 读入 Udacity 提供的原始数据</li>
+<li>进行数据清理和探索性分析（EDA）</li>
+<li>生成特征和标签</li>
+<li>使用监督学习进行建模、评估和改进</li>
+</ol>
+<h2 id="模型衡量指标"><a href="#模型衡量指标" class="headerlink" title="模型衡量指标"></a>模型衡量指标</h2><p>下面的插图解释了 <code>精度（precision）</code> 和 <code>召回率（recall）</code> 指标，<code>准确率（accuracy）</code> 指的是正确分类的点占总点数的比例。</p>
+<p><img src="/images/predicting-customer-churn-using-supervised-machine-learning/precisionrecall.svg" alt="f1\_score"></p>
+<p>在这里我们选择 <code>F1-score</code> 作为模型评价指标的首选，因为 <code>F1-score</code> 同时考虑了 <code>precision</code> 和 <code>recall</code> ，具体的计算公式如下：</p>
+<p>$$ F_1=2 ⋅ \frac{Precision*Recall}{Precision+Recall} $$</p>
 <h1 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h1><p>完整的数据集大小约 12GB，由于时间和计算条件的限制，我选取了它的一个迷你子集，大小约一百兆，其中包含了225个用户的278,154条行为。数据集的结构如下：</p>
 <table>
 <thead>
@@ -335,11 +347,16 @@
 <h1 id="模型选择与结果"><a href="#模型选择与结果" class="headerlink" title="模型选择与结果"></a>模型选择与结果</h1><p>基于以上的分析，最终选取了 <code>churn</code>，<code>gender</code>，<code>songs</code>，<code>thumbs up</code>，<code>thumbs down</code> 和 <code>artist</code> 这些变量作为特征工程，其中 <code>churn</code> 作为标签。</p>
 <p>具体数据字典如下图所示：</p>
 <p><img src="/images/predicting-customer-churn-using-supervised-machine-learning/features.png" alt="特征工程"></p>
-<p>在预测流失用户的时候，我们希望能准确找到潜在流失的用户，因此召回率（recall）是衡量模型一个重要指标，同时，我们希望尽可能少的将留下的用户预测为流失用户，即减少第二类错误的概率，因此，准确率（accuracy）指标也要考虑，所以，在项目中 <code>F1_score</code> 成为我们模型评价指标的首选。</p>
-<p>预测用户流失率，本质上是二分类问题，因此，我选择了 <code>LogisticRegression</code>和 <code>RandomForestClassifier</code> 两种模型，其中 <code>LogisticRegression</code> 模型的效果最好，在测试集中 F1_score 达到了 0.767，因此，可以采用该模型进行预测流失用户。</p>
-<h1 id="总结与反思"><a href="#总结与反思" class="headerlink" title="总结与反思"></a>总结与反思</h1><p>预测流失用户，本质上是针对用户的二分类问题，因此适合采用监督学习的机器学习方法。项目主要流程包括：数据清洗，探索性分析，特征工程，监督学习建模，建模过程中采用F1分数对模型进行评估和改进。</p>
+<p>预测用户流失率，本质上是二分类问题，因此，我选择了 <code>LogisticRegression</code>和 <code>RandomForestClassifier</code> 两种模型。</p>
+<h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>对于逻辑回归，正则化强度的逆用作超参数进行搜索。 此超参数越小，指定的调整越强，它用于惩罚可能导致过度拟合的LR模型的大系数。 <code>0.0，0.1，0.01</code> 是要探索的候选对象。 交叉验证后，正则化强度为 <code>0.01</code> 时在训练集上获得最高分0.6324，而其相应的在测试集上为0.767。</p>
+<p>对于随机森林，<code>numTrees</code> 作为超参进行搜索。<code>10，30</code> 是要探索的候选对象。交叉验证后，<code>numTrees</code> 为 <code>10</code> 时在训练集上获得最高分0.572，相应的在测试集上为 0.580。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>根据最终的训练结果，<code>LogisticRegression</code> 模型的效果最好，在测试集中 F1-score 达到了 0.767，因此，可以采用该模型进行预测流失用户。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>预测流失用户，本质上是针对用户的二分类问题，因此适合采用监督学习的机器学习方法。项目主要流程包括：数据清洗，探索性分析，特征工程，监督学习建模，建模过程中采用F1分数对模型进行评估和改进。</p>
 <p>在这个问题上，由于特征较少，所以随机森林算法没有优势，逻辑回归算法表现更好。项目中，可以提取更多的特征，以及更多的参数来对模型进行改进。</p>
-<p>一开始计划之后修改原始数据来进行建模，思考后改成了用包含特征属性的新数据集来进行建模；最好不要破解原始数据，这样可以尝试多次提取不同的特征来进行建模。</p>
+<h2 id="困难与挑战"><a href="#困难与挑战" class="headerlink" title="困难与挑战"></a>困难与挑战</h2><ul>
+<li>在一开始处理源数据和提取特征的时候，你可能需要花点时间去研究下数据结构，可能还要去猜测一些各数据的含义；</li>
+<li>在机器学习算法中获得一个满意的结果也很难。不光需要我们挑选合适的模型，还需要不断去调整算法的参数，以达到我们对预测的一个预期效果。</li>
+</ul>
 <h1 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h1><ol>
 <li><a href="https://github.com/xuncheng/DSND_Sparkify" target="_blank" rel="noopener">https://github.com/xuncheng/DSND_Sparkify</a></li>
 <li><a href="https://spark.apache.org/" target="_blank" rel="noopener">https://spark.apache.org/ </a></li>
@@ -371,8 +388,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-              <a href="/tags/Spark/" rel="tag"># Spark</a>
+              <a href="/tags/Spark-Machine-Learning/" rel="tag"># Spark - Machine Learning</a>
           </div>
 
         
@@ -425,7 +441,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">1.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义客户流失"><span class="nav-number">2.</span> <span class="nav-text">定义客户流失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据可视化"><span class="nav-number">3.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型选择与结果"><span class="nav-number">4.</span> <span class="nav-text">模型选择与结果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结与反思"><span class="nav-number">5.</span> <span class="nav-text">总结与反思</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资料"><span class="nav-number">6.</span> <span class="nav-text">资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目背景"><span class="nav-number">1.</span> <span class="nav-text">项目背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题陈述"><span class="nav-number">1.1.</span> <span class="nav-text">问题陈述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型衡量指标"><span class="nav-number">1.2.</span> <span class="nav-text">模型衡量指标</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据集"><span class="nav-number">2.</span> <span class="nav-text">数据集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义客户流失"><span class="nav-number">3.</span> <span class="nav-text">定义客户流失</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据可视化"><span class="nav-number">4.</span> <span class="nav-text">数据可视化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型选择与结果"><span class="nav-number">5.</span> <span class="nav-text">模型选择与结果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模型训练"><span class="nav-number">5.1.</span> <span class="nav-text">模型训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">5.2.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#困难与挑战"><span class="nav-number">6.1.</span> <span class="nav-text">困难与挑战</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#资料"><span class="nav-number">7.</span> <span class="nav-text">资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
